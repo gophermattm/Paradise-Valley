@@ -1,0 +1,2626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Joshua Tree Estates | Hickok Homes Investor Portal</title>
+    <meta name="description"
+        content="A rare spec development opportunity in Paradise Valley, Arizona. Projected $14.8M+ net profit with 84% ROI. Presented by Hickok Homes.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            /* MOBILE FIX: Remove gray tap highlight on iOS */
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --gold: #c9a962;
+            --gold-light: #f4e4ba;
+            --zinc-950: #09090b;
+            --zinc-900: #18181b;
+            --zinc-800: #27272a;
+            --amber-500: #f59e0b;
+            --amber-600: #d97706;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            background-color: var(--zinc-950);
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .font-display {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+        }
+
+        .font-body {
+            font-family: 'Outfit', system-ui, sans-serif;
+        }
+
+        /* Gold gradient text */
+        .gold-gradient {
+            background: linear-gradient(135deg, #c9a962 0%, #f4e4ba 50%, #c9a962 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Glass card effect */
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(201, 169, 98, 0.15);
+        }
+
+        /* Animations */
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInImage {
+            from {
+                opacity: 0;
+                transform: scale(1.05);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            50% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .shimmer {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(201, 169, 98, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .bounce {
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background: rgba(9, 9, 11, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .nav-logo:hover {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 1.5rem;
+            margin-left: auto;
+            margin-right: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            margin-left: auto;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            padding: 0.625rem 1.5rem;
+            border: 1px solid rgba(201, 169, 98, 0.5);
+            background: transparent;
+            color: var(--gold);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        @media (min-width: 768px) {
+            .nav-cta {
+                margin-left: 0;
+            }
+        }
+
+        .nav-cta:hover {
+            background: rgba(201, 169, 98, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            touch-action: pan-y;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero-image {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .hero-image.active {
+            opacity: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(9, 9, 11, 0.4) 0%,
+                    rgba(9, 9, 11, 0.2) 30%,
+                    rgba(9, 9, 11, 0.2) 50%,
+                    rgba(9, 9, 11, 0.95) 100%);
+        }
+
+        .hero-indicators {
+            position: absolute;
+            bottom: 8rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.75rem;
+            z-index: 20;
+        }
+
+        .hero-indicator {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .hero-indicator.active {
+            background: var(--gold);
+            width: 2rem;
+        }
+
+        .hero-indicator:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-caption {
+            position: absolute;
+            bottom: 10rem;
+            left: 2rem;
+            z-index: 20;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .hero-caption {
+                display: block;
+            }
+        }
+
+        .hero-caption-inner {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1152px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem 0;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge-line {
+            height: 1px;
+            width: 3rem;
+            background: linear-gradient(to right, transparent, rgba(201, 169, 98, 0.5));
+        }
+
+        .hero-badge-line:last-child {
+            background: linear-gradient(to left, transparent, rgba(201, 169, 98, 0.5));
+        }
+
+        .hero-badge-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(201, 169, 98, 0.8);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title-main {
+            display: block;
+            color: white;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-title-accent {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 300;
+            max-width: 42rem;
+            margin: 2rem auto 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-presented {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-presented-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-metrics {
+                gap: 4rem;
+            }
+        }
+
+        .hero-metric {
+            text-align: center;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .hero-metric-value {
+            font-size: clamp(1.875rem, 5vw, 3rem);
+            font-weight: 600;
+        }
+
+        .hero-metric-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 0.5rem;
+        }
+
+        .hero-cta {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: var(--amber-600);
+            color: var(--zinc-950);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .hero-cta:hover {
+            box-shadow: 0 0 40px rgba(201, 169, 98, 0.3);
+        }
+
+        .hero-cta span {
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-cta svg {
+            position: relative;
+            z-index: 10;
+            transition: transform 0.3s;
+        }
+
+        .hero-cta:hover svg {
+            transform: translateX(4px);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-scroll-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.625rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-scroll svg {
+            color: rgba(201, 169, 98, 0.5);
+        }
+
+        /* Sections */
+        section {
+            position: relative;
+            padding: 5rem 1rem;
+        }
+
+        @media (min-width: 768px) {
+            section {
+                padding: 8rem 1.5rem;
+            }
+        }
+
+        .section-dark {
+            background: var(--zinc-950);
+        }
+
+        .section-darker {
+            background: var(--zinc-900);
+        }
+
+        .section-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(201, 169, 98, 0.2), transparent);
+        }
+
+        .container {
+            max-width: 1152px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(201, 169, 98, 0.8);
+        }
+
+        .section-title {
+            font-size: clamp(1.875rem, 5vw, 3rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 1rem;
+        }
+
+        .section-subtitle {
+            font-family: 'Outfit', sans-serif;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 1.5rem;
+            max-width: 42rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Property Showcase */
+        .property-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .property-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .property-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+
+        .property-image {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+        }
+
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .property-card:hover .property-image img {
+            transform: scale(1.05);
+        }
+
+        .property-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(9, 9, 11, 0.95), transparent 60%);
+        }
+
+        .property-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+        }
+
+        .property-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-badge svg {
+            width: 1rem;
+            height: 1rem;
+            color: var(--gold);
+        }
+
+        .property-badge-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .property-title {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-stats {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .property-price {
+            font-size: 1.875rem;
+            font-weight: 600;
+        }
+
+        .property-detail {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .property-border {
+            position: absolute;
+            inset: 0;
+            border: 2px solid transparent;
+            border-radius: 0.5rem;
+            transition: border-color 0.3s;
+            pointer-events: none;
+        }
+
+        .property-card:hover .property-border {
+            border-color: rgba(201, 169, 98, 0.3);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .about-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 4rem;
+            }
+        }
+
+        .about-content h2 {
+            font-size: clamp(1.875rem, 5vw, 3rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .about-content h2 span {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .about-text {
+            font-family: 'Outfit', sans-serif;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text strong {
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .about-text .highlight {
+            color: var(--gold);
+        }
+
+        .about-quote {
+            font-style: italic;
+            border-left: 2px solid rgba(201, 169, 98, 0.5);
+            padding-left: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .about-quote-author {
+            display: block;
+            margin-top: 0.5rem;
+            font-style: normal;
+            font-size: 0.875rem;
+            color: rgba(201, 169, 98, 0.8);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .stat-card {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-card svg {
+            width: 2rem;
+            height: 2rem;
+            color: rgba(201, 169, 98, 0.7);
+            margin: 0 auto 0.75rem;
+        }
+
+        .stat-value {
+            font-size: 1.875rem;
+            font-weight: 600;
+        }
+
+        .stat-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.4);
+            margin-top: 0.5rem;
+        }
+
+        /* Opportunity Cards */
+        .opportunity-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .opportunity-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        .opportunity-card {
+            position: relative;
+            padding: 1.5rem;
+            transition: all 0.5s;
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .opportunity-card {
+                padding: 2rem;
+            }
+        }
+
+        .opportunity-card.active {
+            border-color: rgba(201, 169, 98, 0.4);
+            box-shadow: 0 0 60px rgba(201, 169, 98, 0.1);
+        }
+
+        .opportunity-card:hover {
+            border-color: rgba(201, 169, 98, 0.3);
+        }
+
+        .opportunity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .opportunity-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .opportunity-badge svg {
+            width: 1rem;
+            height: 1rem;
+            color: var(--gold);
+        }
+
+        .opportunity-badge-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .opportunity-title {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        @media (min-width: 768px) {
+            .opportunity-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        .opportunity-roi {
+            width: 3rem;
+            height: 3rem;
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .opportunity-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .opportunity-spec {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+        }
+
+        .opportunity-spec-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.625rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 0.25rem;
+        }
+
+        .opportunity-spec-value {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .opportunity-financials {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+        }
+
+        .opportunity-financials.blurred {
+            filter: blur(8px);
+            user-select: none;
+        }
+
+        .opportunity-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+        }
+
+        .opportunity-row-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .opportunity-row-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .opportunity-profit-row {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(201, 169, 98, 0.2);
+            margin-top: 0.75rem;
+        }
+
+        .opportunity-profit-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.875rem;
+            color: var(--gold);
+        }
+
+        .opportunity-profit-value {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        .opportunity-locked {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(9, 9, 11, 0.6);
+            backdrop-filter: blur(4px);
+            border-radius: inherit;
+        }
+
+        .opportunity-locked svg {
+            width: 2rem;
+            height: 2rem;
+            color: rgba(201, 169, 98, 0.5);
+            margin-bottom: 0.5rem;
+        }
+
+        .opportunity-locked-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Registration Form */
+        .register-icon {
+            width: 4rem;
+            height: 4rem;
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .register-icon svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: var(--gold);
+        }
+
+        .register-form {
+            max-width: 32rem;
+            margin: 0 auto;
+        }
+
+        .form-error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171;
+            padding: 0.75rem 1rem;
+            border-radius: 0.25rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            background: var(--zinc-800);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 1rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            color: white;
+            border-radius: 0.25rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: rgba(201, 169, 98, 0.5);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding-top: 0.5rem;
+            /* MOBILE FIX: Make entire row clickable */
+            cursor: pointer;
+        }
+
+        .checkbox-button {
+            flex-shrink: 0;
+            width: 1.25rem;
+            height: 1.25rem;
+            margin-top: 0.125rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: var(--zinc-800);
+            border-radius: 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            /* MOBILE FIX: Prevent SVG from capturing clicks */
+            pointer-events: none;
+        }
+
+        /* Removed hover border change on button for mobile robustness */
+        .form-checkbox:hover .checkbox-button {
+            border-color: rgba(201, 169, 98, 0.5);
+        }
+
+        .checkbox-button.checked {
+            background: var(--gold);
+            border-color: var(--gold);
+        }
+
+        .checkbox-button svg {
+            width: 0.75rem;
+            height: 0.75rem;
+            color: var(--zinc-950);
+            stroke-width: 3;
+            display: none;
+            pointer-events: none;
+        }
+
+        .checkbox-button.checked svg {
+            display: block;
+        }
+
+        .checkbox-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+            cursor: pointer;
+            /* MOBILE FIX: Prevent text selection on tap */
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .checkbox-label .highlight {
+            color: var(--gold);
+        }
+
+        .form-submit {
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            margin-top: 2rem;
+            background: var(--amber-600);
+            color: var(--zinc-950);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .form-submit:hover {
+            box-shadow: 0 0 40px rgba(201, 169, 98, 0.3);
+        }
+
+        .form-submit span,
+        .form-submit svg {
+            position: relative;
+            z-index: 10;
+        }
+
+        .form-submit:hover svg {
+            transform: translateX(4px);
+        }
+
+        .form-submit svg {
+            transition: transform 0.3s;
+        }
+
+        .form-status {
+            text-align: center;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.3);
+            margin-top: 1rem;
+        }
+
+        .register-success {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .register-success svg {
+            width: 3rem;
+            height: 3rem;
+            color: var(--gold);
+            margin: 0 auto 1rem;
+        }
+
+        .register-success-title {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .register-success-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Pro Forma Table */
+        .proforma-card {
+            overflow: hidden;
+        }
+
+        .proforma-tabs {
+            display: flex;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .proforma-tab {
+            flex: 1;
+            padding: 1.25rem 1rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .proforma-tab:hover {
+            color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .proforma-tab.active {
+            background: rgba(201, 169, 98, 0.1);
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+
+        .proforma-tab-title {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .proforma-tab-subtitle {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .proforma-tab-subtitle {
+                display: block;
+            }
+        }
+
+        .proforma-content {
+            padding: 1rem;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        @media (min-width: 768px) {
+            .proforma-content {
+                padding: 2rem;
+            }
+        }
+
+        .proforma-table {
+            width: 100%;
+            min-width: 100%;
+            border-collapse: collapse;
+        }
+
+        .proforma-table th {
+            text-align: left;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .proforma-table th:not(:first-child) {
+            text-align: right;
+        }
+
+        .proforma-table td {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .proforma-table td:not(:first-child) {
+            text-align: right;
+        }
+
+        .proforma-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .proforma-table .row-label {
+            font-family: 'Outfit', sans-serif;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .proforma-table .row-value {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .proforma-table .row-percent {
+            font-family: 'Outfit', sans-serif;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .proforma-table .total-row {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .proforma-table .total-row td {
+            font-weight: 500;
+            color: white;
+        }
+
+        .proforma-table .total-row .row-value {
+            font-size: 1.25rem;
+        }
+
+        .proforma-table .profit-row {
+            background: rgba(201, 169, 98, 0.1);
+        }
+
+        .proforma-table .profit-row td {
+            padding: 1.25rem 0;
+            border-bottom: none;
+        }
+
+        .proforma-table .profit-row .row-label {
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        .proforma-table .profit-row .row-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* Risk Cards */
+        .risk-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .risk-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .risk-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .risk-card {
+            padding: 1.5rem;
+            height: 100%;
+            transition: all 0.3s;
+        }
+
+        @media (min-width: 768px) {
+            .risk-card {
+                padding: 2rem;
+            }
+        }
+
+        .risk-card:hover {
+            border-color: rgba(201, 169, 98, 0.3);
+        }
+
+        .risk-icon {
+            width: 3rem;
+            height: 3rem;
+            border: 1px solid rgba(201, 169, 98, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .risk-card:hover .risk-icon {
+            border-color: rgba(201, 169, 98, 0.5);
+            background: rgba(201, 169, 98, 0.05);
+        }
+
+        .risk-icon svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: var(--gold);
+        }
+
+        .risk-title {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+        }
+
+        .risk-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.6;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, rgba(201, 169, 98, 0.5), rgba(201, 169, 98, 0.3), rgba(201, 169, 98, 0.1));
+        }
+
+        @media (min-width: 768px) {
+            .timeline-line {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        .timeline-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-item:nth-child(odd) {
+                flex-direction: row;
+            }
+
+            .timeline-item:nth-child(even) {
+                flex-direction: row-reverse;
+            }
+        }
+
+        .timeline-content {
+            margin-left: 3rem;
+            flex: 1;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-content {
+                width: 45%;
+                margin-left: 0;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content {
+                text-align: right;
+                padding-right: 3rem;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content {
+                text-align: left;
+                padding-left: 3rem;
+            }
+        }
+
+        .timeline-phase {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0.5rem 0 0.75rem;
+        }
+
+        .timeline-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.6;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: var(--zinc-950);
+            border: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 0 4px rgba(201, 169, 98, 0.2), 0 0 20px rgba(201, 169, 98, 0.3);
+        }
+
+        @media (min-width: 768px) {
+            .timeline-dot {
+                left: 50%;
+                transform: translateX(-50%);
+                width: 3rem;
+                height: 3rem;
+            }
+        }
+
+        .timeline-dot svg {
+            width: 1rem;
+            height: 1rem;
+            color: var(--gold);
+        }
+
+        @media (min-width: 768px) {
+            .timeline-dot svg {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+        }
+
+        .timeline-duration {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-duration {
+                display: block;
+                width: 45%;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-duration {
+                padding-left: 3rem;
+            }
+
+            .timeline-item:nth-child(even) .timeline-duration {
+                padding-right: 3rem;
+                text-align: right;
+            }
+        }
+
+        .timeline-duration-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+        }
+
+        .timeline-duration-card svg {
+            width: 1rem;
+            height: 1rem;
+            color: rgba(201, 169, 98, 0.7);
+        }
+
+        .timeline-duration-text {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .timeline-mobile-duration {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-mobile-duration {
+                display: none;
+            }
+        }
+
+        .timeline-mobile-duration svg {
+            width: 1rem;
+            height: 1rem;
+            color: rgba(201, 169, 98, 0.7);
+        }
+
+        .timeline-mobile-duration span {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* FAQ */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .faq-card {
+            padding: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .faq-card {
+                padding: 2rem;
+            }
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .faq-question {
+                font-size: 1.25rem;
+            }
+        }
+
+        .faq-q {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.875rem;
+            color: var(--gold);
+            margin-top: 0.25rem;
+        }
+
+        .faq-answer {
+            font-family: 'Outfit', sans-serif;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+            padding-left: 1.75rem;
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            padding: 3rem 1rem;
+            background: var(--zinc-950);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (min-width: 768px) {
+            footer {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        .footer-inner {
+            max-width: 1152px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-top {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-brand {
+                align-items: flex-start;
+            }
+        }
+
+        .footer-brand a {
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .footer-brand a:hover {
+            color: var(--gold);
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .footer-link {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            color: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover {
+            color: var(--gold);
+        }
+
+        .footer-link svg {
+            width: 0.75rem;
+            height: 0.75rem;
+        }
+
+        .footer-legal {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.3);
+            text-align: center;
+            max-width: 28rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-legal {
+                text-align: right;
+            }
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .footer-copyright {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Utility */
+        .hidden {
+            display: none !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="https://www.hickokhomes.com" target="_blank" rel="noopener noreferrer" class="nav-logo">
+                <svg viewBox="0 0 200 65" width="120" height="40" xmlns="http://www.w3.org/2000/svg">
+                    <g fill="currentColor">
+                        <rect x="10" y="15" width="8" height="35" rx="1" />
+                        <rect x="32" y="15" width="8" height="35" rx="1" />
+                        <rect x="10" y="28" width="30" height="7" rx="1" />
+                        <polygon points="25,5 10,18 40,18" fill="none" stroke="currentColor" stroke-width="3"
+                            stroke-linejoin="round" />
+                    </g>
+                    <text x="55" y="38" font-family="Georgia, serif" font-size="22" font-weight="600" letter-spacing="3"
+                        fill="currentColor">HICKOK</text>
+                    <text x="55" y="55" font-family="Arial, sans-serif" font-size="14" font-weight="300"
+                        letter-spacing="6" fill="currentColor" opacity="0.7">HOMES</text>
+                </svg>
+            </a>
+            <div class="nav-links">
+                <a href="https://www.hickokhomes.com/projects" target="_blank" rel="noopener noreferrer"
+                    class="nav-link">
+                    Projects <i data-lucide="external-link"></i>
+                </a>
+                <a href="https://www.hickokhomes.com/about" target="_blank" rel="noopener noreferrer" class="nav-link">
+                    About <i data-lucide="external-link"></i>
+                </a>
+            </div>
+            <button class="nav-cta"
+                onclick="document.getElementById('register').scrollIntoView({ behavior: 'smooth' })">
+                Investor Access
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-image active" id="heroImage1">
+                <img src="6203_E_Joshua_Tree_Ln.webp"
+                    alt="6203 E Joshua Tree Lane - Paradise Valley luxury estate with Camelback Mountain backdrop"
+                    loading="eager">
+            </div>
+            <div class="hero-image" id="heroImage2">
+                <img src="6516_E_Meadowlark_Ln.webp" alt="6516 E Meadowlark Lane - Modern desert architecture at dusk"
+                    loading="lazy">
+            </div>
+            <div class="hero-overlay"></div>
+        </div>
+
+        <div class="hero-indicators">
+            <button class="hero-indicator active" data-index="0" onclick="setHeroImage(0)"></button>
+            <button class="hero-indicator" data-index="1" onclick="setHeroImage(1)"></button>
+        </div>
+
+        <div class="hero-caption">
+            <div class="hero-caption-inner glass-card">
+                <i data-lucide="eye"></i>
+                <span class="font-body" id="heroCaption" style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">6203
+                    E Joshua Tree Lane - $17M Comparable</span>
+            </div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-badge">
+                <div class="hero-badge-line"></div>
+                <span class="hero-badge-text">Paradise Valley, Arizona</span>
+                <div class="hero-badge-line"></div>
+            </div>
+
+            <h1 class="hero-title">
+                <span class="hero-title-main">The Joshua Tree</span>
+                <span class="hero-title-accent gold-gradient">Estates</span>
+            </h1>
+
+            <p class="hero-subtitle font-display">
+                A Rare Spec Development Opportunity in America's Most Coveted Desert Enclave
+            </p>
+
+            <div class="hero-presented">
+                <span class="hero-presented-text">Presented by</span>
+                <svg viewBox="0 0 200 65" width="120" height="40" style="color: rgba(201, 169, 98, 0.9);"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <g fill="currentColor">
+                        <rect x="10" y="15" width="8" height="35" rx="1" />
+                        <rect x="32" y="15" width="8" height="35" rx="1" />
+                        <rect x="10" y="28" width="30" height="7" rx="1" />
+                        <polygon points="25,5 10,18 40,18" fill="none" stroke="currentColor" stroke-width="3"
+                            stroke-linejoin="round" />
+                    </g>
+                    <text x="55" y="38" font-family="Georgia, serif" font-size="22" font-weight="600" letter-spacing="3"
+                        fill="currentColor">HICKOK</text>
+                    <text x="55" y="55" font-family="Arial, sans-serif" font-size="14" font-weight="300"
+                        letter-spacing="6" fill="currentColor" opacity="0.7">HOMES</text>
+                </svg>
+            </div>
+
+            <div class="hero-metrics">
+                <div class="hero-metric glass-card">
+                    <div class="hero-metric-value gold-gradient" id="metricProfit">$14.8M+</div>
+                    <div class="hero-metric-label">Projected Net Profit</div>
+                </div>
+                <div class="hero-metric glass-card">
+                    <div class="hero-metric-value gold-gradient" id="metricROI">84%</div>
+                    <div class="hero-metric-label">Avg. ROI</div>
+                </div>
+                <div class="hero-metric glass-card">
+                    <div class="hero-metric-value gold-gradient">18</div>
+                    <div class="hero-metric-label">Month Cycle</div>
+                </div>
+            </div>
+
+            <button class="hero-cta"
+                onclick="document.getElementById('register').scrollIntoView({ behavior: 'smooth' })">
+                <span>Request Investor Access</span>
+                <i data-lucide="arrow-right"></i>
+                <div class="shimmer"></div>
+            </button>
+        </div>
+
+        <div class="hero-scroll bounce">
+            <span class="hero-scroll-text">Explore</span>
+            <i data-lucide="chevron-down"></i>
+        </div>
+    </section>
+
+    <section class="section-dark">
+        <div class="section-line"></div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Comparable Sales</span>
+                <h2 class="section-title font-display">Market Validation</h2>
+                <p class="section-subtitle">Recent sales in the immediate vicinity demonstrate strong buyer demand for
+                    modern luxury estates.</p>
+            </div>
+
+            <div class="property-grid">
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="6203_E_Joshua_Tree_Ln.webp" alt="6203 E Joshua Tree Lane">
+                    </div>
+                    <div class="property-overlay"></div>
+                    <div class="property-info">
+                        <div class="property-badge">
+                            <i data-lucide="map-pin"></i>
+                            <span class="property-badge-text">Sold 2024</span>
+                        </div>
+                        <h3 class="property-title font-display">6203 E Joshua Tree Lane</h3>
+                        <div class="property-stats">
+                            <span class="property-price gold-gradient font-display">$17.0M</span>
+                            <span class="property-detail">8,847 SF</span>
+                            <span class="property-detail">$1,921/SF</span>
+                        </div>
+                    </div>
+                    <div class="property-border"></div>
+                </div>
+
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="6516_E_Meadowlark_Ln.webp" alt="6516 E Meadowlark Lane">
+                    </div>
+                    <div class="property-overlay"></div>
+                    <div class="property-info">
+                        <div class="property-badge">
+                            <i data-lucide="map-pin"></i>
+                            <span class="property-badge-text">Sold 2024</span>
+                        </div>
+                        <h3 class="property-title font-display">6516 E Meadowlark Lane</h3>
+                        <div class="property-stats">
+                            <span class="property-price gold-gradient font-display">$14.27M</span>
+                            <span class="property-detail">7,892 SF</span>
+                            <span class="property-detail">$1,808/SF</span>
+                        </div>
+                    </div>
+                    <div class="property-border"></div>
+                </div>
+            </div>
+
+            <p class="text-center font-body"
+                style="font-size: 0.875rem; color: rgba(255,255,255,0.4); margin-top: 2rem;">
+                These recent comparable sales validate our exit pricing strategy for The Joshua Tree Estates.
+            </p>
+        </div>
+    </section>
+
+    <section class="section-darker">
+        <div class="section-line"></div>
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <span class="section-label">The Developer</span>
+                    <h2 class="font-display">
+                        120 Years of<br>
+                        <span>Building Excellence</span>
+                    </h2>
+                    <p class="about-text">
+                        <strong>Hickok Homes</strong> is a branch of the historic Hickok-Dible Companies,
+                        Kansas City's oldest existing real estate development company, founded in 1904 by Napoleon W.
+                        Dible.
+                    </p>
+                    <p class="about-text">
+                        Under the leadership of <span class="highlight">James Hickok</span>, a fifth-generation family
+                        member,
+                        Hickok Homes continues a century-long tradition of innovation—from the iconic "Dible Tudor"
+                        homes lining
+                        Ward Parkway to today's modern luxury residences.
+                    </p>
+                    <p class="about-quote about-text">
+                        "You are nothing without your name. I feel like I have a big responsibility to carry on the
+                        vision
+                        that my great-great-grandfather had."
+                        <span class="about-quote-author">— James Hickok, President</span>
+                    </p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card glass-card">
+                        <i data-lucide="calendar"></i>
+                        <div class="stat-value gold-gradient font-display">1904</div>
+                        <div class="stat-label">Founded</div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <i data-lucide="building-2"></i>
+                        <div class="stat-value gold-gradient font-display">7,000+</div>
+                        <div class="stat-label">Living Units Built</div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <i data-lucide="users"></i>
+                        <div class="stat-value gold-gradient font-display">5</div>
+                        <div class="stat-label">Generations</div>
+                    </div>
+                    <div class="stat-card glass-card">
+                        <i data-lucide="award"></i>
+                        <div class="stat-value gold-gradient font-display">#1</div>
+                        <div class="stat-label">Voted Best Developer</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-dark">
+        <div class="section-line"></div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">The Opportunity</span>
+                <h2 class="section-title font-display">Two Adjacent Masterworks</h2>
+                <p class="section-subtitle">
+                    Adjacent parcels on E Joshua Tree Lane offer a rare opportunity for scaled luxury development
+                    with projected combined returns exceeding $14.8 million.
+                </p>
+            </div>
+
+            <div class="opportunity-grid">
+                <div class="opportunity-card glass-card active" data-lot="6418">
+                    <div class="opportunity-header">
+                        <div>
+                            <div class="opportunity-badge">
+                                <i data-lucide="map-pin"></i>
+                                <span class="opportunity-badge-text">Lot 6418</span>
+                            </div>
+                            <h3 class="opportunity-title font-display">6418 E Joshua Tree Lane</h3>
+                        </div>
+                        <div class="opportunity-roi gold-gradient font-display">83%</div>
+                    </div>
+
+                    <div class="opportunity-specs">
+                        <div class="opportunity-spec">
+                            <div class="opportunity-spec-label">Est. Size</div>
+                            <div class="opportunity-spec-value font-display">9,200+ SF</div>
+                        </div>
+                        <div class="opportunity-spec">
+                            <div class="opportunity-spec-label">Lot Size</div>
+                            <div class="opportunity-spec-value font-display">1.1 acres</div>
+                        </div>
+                    </div>
+
+                    <div class="opportunity-financials" id="financials6418">
+                        <div class="opportunity-row">
+                            <span class="opportunity-row-label">Acquisition</span>
+                            <span class="opportunity-row-value">$3.90M</span>
+                        </div>
+                        <div class="opportunity-row">
+                            <span class="opportunity-row-label">All-In Cost</span>
+                            <span class="opportunity-row-value">$9.02M</span>
+                        </div>
+                        <div class="opportunity-row">
+                            <span class="opportunity-row-label">Exit Price</span>
+                            <span class="opportunity-row-value">$16.50M</span>
+                        </div>
+                        <div class="opportunity-profit-row">
+                            <span class="opportunity-profit-label">Net Profit</span>
+                            <span class="opportunity-profit-value gold-gradient font-display">$7.48M</span>
+                        </div>
+                    </div>
+
+                    <div class="opportunity-locked" id="locked6418">
+                        <i data-lucide="lock"></i>
+                        <span class="opportunity-locked-text">Register to view financials</span>
+                    </div>
+                </div>
+
+                <div class="opportunity-card glass-card" data-lot="5840">
+                    <div class="opportunity-header">
+                        <div>
+                            <div class="opportunity-badge">
+                                <i data-lucide="map-pin"></i>
+                                <span class="opportunity-badge-text">Lot 5840</span>
+                            </div>
+                            <h3 class="opportunity-title font-display">5840 E Joshua Tree Lane</h3>
+                        </div>
+                        <div class="opportunity-roi gold-gradient font-display">86%</div>
+                    </div>
+
+                    <div class="opportunity-specs">
+                        <div class="opportunity-spec">
+                            <div class="opportunity-spec-label">Est. Size</div>
+                            <div class="opportunity-spec-value font-display">9,400+ SF</div>
+                        </div>
+                        <div class="opportunity-spec">
+                            <div class="opportunity-spec-label">Lot Size</div>
+                            <div class="opportunity-spec-value font-display">1.05 acres</div>
+                        </div>
+                    </div>
+
+                    <div class="opportunity-financials" id="financials5840">
+                        <div class="opportunity-row">
+                            <span class="opportunity-row-label">Acquisition</span>
+                            <span class="opportunity-row-value">$3.50M</span>
+                        </div>
+                        <div class="opportunity-row">
+                            <span class="opportunity-row-label">All-In Cost</span>
+                            <span class="opportunity-row-value">$8.60M</span>
+                        </div>
+                        <div class="opportunity-row">
+                            <span class="opportunity-row-label">Exit Price</span>
+                            <span class="opportunity-row-value">$16.00M</span>
+                        </div>
+                        <div class="opportunity-profit-row">
+                            <span class="opportunity-profit-label">Net Profit</span>
+                            <span class="opportunity-profit-value gold-gradient font-display">$7.40M</span>
+                        </div>
+                    </div>
+
+                    <div class="opportunity-locked" id="locked5840">
+                        <i data-lucide="lock"></i>
+                        <span class="opportunity-locked-text">Register to view financials</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-darker" id="register">
+        <div class="section-line"></div>
+        <div class="container">
+            <div class="register-icon">
+                <i data-lucide="lock" id="registerIconLock"></i>
+                <i data-lucide="check-circle" id="registerIconCheck" class="hidden"></i>
+            </div>
+
+            <div class="section-header">
+                <h2 class="section-title font-display" id="registerTitle">Accredited Investor Access</h2>
+                <p class="section-subtitle" id="registerSubtitle">Complete your registration to access detailed
+                    financial projections.</p>
+            </div>
+
+            <div class="register-form" id="registerForm">
+                <div class="form-error hidden" id="formError"></div>
+
+                <div class="form-group">
+                    <label class="form-label" for="nameInput">Full Name</label>
+                    <input type="text" id="nameInput" class="form-input" placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="emailInput">Email Address</label>
+                    <input type="email" id="emailInput" class="form-input" placeholder="investor@example.com">
+                </div>
+
+                <div class="form-checkbox" onclick="toggleCheckbox()">
+                    <button type="button" class="checkbox-button" id="checkboxButton">
+                        <i data-lucide="check"></i>
+                    </button>
+                    <span class="checkbox-label">
+                        I confirm that I am an <span class="highlight">Accredited Investor</span>
+                        (Net worth exceeding $1M excluding primary residence, or annual income exceeding $200,000).
+                    </span>
+                </div>
+
+                <button class="form-submit" onclick="submitForm()">
+                    <span>Verify & Access Portfolio</span>
+                    <i data-lucide="arrow-right"></i>
+                    <div class="shimmer"></div>
+                </button>
+
+                <p class="form-status">
+                    Form status: Name (<span id="statusName">○</span>) | Email (<span id="statusEmail">○</span>) |
+                    Confirmed (<span id="statusConfirmed">○</span>)
+                </p>
+            </div>
+
+            <div class="register-success glass-card hidden" id="registerSuccess">
+                <i data-lucide="check-circle"></i>
+                <p class="register-success-title font-display">Registration Complete</p>
+                <p class="register-success-text">Scroll down to explore full financial details</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-dark hidden" id="proformaSection">
+        <div class="section-line"></div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Pro Forma</span>
+                <h2 class="section-title font-display">Complete Financial Analysis</h2>
+            </div>
+
+            <div class="proforma-card glass-card">
+                <div class="proforma-tabs">
+                    <button class="proforma-tab active" data-tab="6418" onclick="setProformaTab('6418')">
+                        <span class="proforma-tab-title">Lot 6418</span>
+                        <span class="proforma-tab-subtitle">6418 E Joshua Tree Lane</span>
+                    </button>
+                    <button class="proforma-tab" data-tab="5840" onclick="setProformaTab('5840')">
+                        <span class="proforma-tab-title">Lot 5840</span>
+                        <span class="proforma-tab-subtitle">5840 E Joshua Tree Lane</span>
+                    </button>
+                    <button class="proforma-tab" data-tab="combined" onclick="setProformaTab('combined')">
+                        <span class="proforma-tab-title">Combined</span>
+                        <span class="proforma-tab-subtitle">Portfolio Total</span>
+                    </button>
+                </div>
+
+                <div class="proforma-content">
+                    <table class="proforma-table">
+                        <thead>
+                            <tr>
+                                <th>Line Item</th>
+                                <th>Amount</th>
+                                <th>% of Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="proformaBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-darker hidden" id="riskSection">
+        <div class="section-line"></div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Investor Protection</span>
+                <h2 class="section-title font-display">Risk Mitigation Framework</h2>
+            </div>
+
+            <div class="risk-grid">
+                <div class="risk-card glass-card">
+                    <div class="risk-icon">
+                        <i data-lucide="shield"></i>
+                    </div>
+                    <h3 class="risk-title font-display">Market Cycle Insulation</h3>
+                    <p class="risk-text">Paradise Valley's ultra-luxury segment demonstrates remarkable resilience to
+                        broader market fluctuations.</p>
+                </div>
+
+                <div class="risk-card glass-card">
+                    <div class="risk-icon">
+                        <i data-lucide="dollar-sign"></i>
+                    </div>
+                    <h3 class="risk-title font-display">Financial Guardrails</h3>
+                    <p class="risk-text">Conservative 65% LTV structures with built-in contingencies ensure capital
+                        preservation.</p>
+                </div>
+
+                <div class="risk-card glass-card">
+                    <div class="risk-icon">
+                        <i data-lucide="target"></i>
+                    </div>
+                    <h3 class="risk-title font-display">Operational Security</h3>
+                    <p class="risk-text">120+ years of Hickok-Dible development expertise minimizing execution risk.</p>
+                </div>
+
+                <div class="risk-card glass-card">
+                    <div class="risk-icon">
+                        <i data-lucide="layers"></i>
+                    </div>
+                    <h3 class="risk-title font-display">Design Continuity</h3>
+                    <p class="risk-text">The renowned 'Hickok Homes Touch' aligned with $15M+ buyer preferences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-dark hidden" id="timelineSection">
+        <div class="section-line"></div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Execution</span>
+                <h2 class="section-title font-display">18-Month Capital Deployment</h2>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-phase">Phase 1</span>
+                        <h3 class="timeline-title font-display">Land Acquisition</h3>
+                        <p class="timeline-text">Secure both parcels with strategic financing structure. Due diligence
+                            and title clearing.</p>
+                        <div class="timeline-mobile-duration glass-card">
+                            <i data-lucide="clock"></i>
+                            <span>Month 1</span>
+                        </div>
+                    </div>
+                    <div class="timeline-dot">
+                        <i data-lucide="landmark"></i>
+                    </div>
+                    <div class="timeline-duration">
+                        <div class="timeline-duration-card glass-card">
+                            <i data-lucide="clock"></i>
+                            <span class="timeline-duration-text font-display">Month 1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-phase">Phase 2</span>
+                        <h3 class="timeline-title font-display">Vertical Construction</h3>
+                        <p class="timeline-text">Full architectural development, permitting, and construction. Interior
+                            curation and landscape design executed in parallel.</p>
+                        <div class="timeline-mobile-duration glass-card">
+                            <i data-lucide="clock"></i>
+                            <span>Months 2–15</span>
+                        </div>
+                    </div>
+                    <div class="timeline-dot">
+                        <i data-lucide="building-2"></i>
+                    </div>
+                    <div class="timeline-duration">
+                        <div class="timeline-duration-card glass-card">
+                            <i data-lucide="clock"></i>
+                            <span class="timeline-duration-text font-display">Months 2–15</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="timeline-phase">Phase 3</span>
+                        <h3 class="timeline-title font-display">Marketing & Disposition</h3>
+                        <p class="timeline-text">Strategic pre-marketing to qualified buyers. Professional staging and
+                            luxury brokerage engagement.</p>
+                        <div class="timeline-mobile-duration glass-card">
+                            <i data-lucide="clock"></i>
+                            <span>Months 16–18</span>
+                        </div>
+                    </div>
+                    <div class="timeline-dot">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <div class="timeline-duration">
+                        <div class="timeline-duration-card glass-card">
+                            <i data-lucide="clock"></i>
+                            <span class="timeline-duration-text font-display">Months 16–18</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-darker hidden" id="faqSection">
+        <div class="section-line"></div>
+        <div class="container" style="max-width: 896px;">
+            <div class="section-header">
+                <span class="section-label">Due Diligence</span>
+                <h2 class="section-title font-display">Investor FAQ</h2>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-card glass-card">
+                    <h3 class="faq-question font-display">
+                        <span class="faq-q">Q.</span>
+                        How do you justify the aggressive exit pricing?
+                    </h3>
+                    <p class="faq-answer">
+                        Exit pricing is supported by recent comparable sales on E Joshua Tree Lane ($17.0M) and E
+                        Meadowlark Lane ($14.27M).
+                        Our 9,000+ SF designs with modern-industrial architecture are positioned competitively within
+                        demonstrated market parameters.
+                    </p>
+                </div>
+
+                <div class="faq-card glass-card">
+                    <h3 class="faq-question font-display">
+                        <span class="faq-q">Q.</span>
+                        How are construction costs hedged against inflation?
+                    </h3>
+                    <p class="faq-answer">
+                        We employ fixed-price contracts with pre-negotiated material cost locks, established
+                        relationships with premium subcontractors,
+                        and a 10% contingency buffer built into all projections. Hickok Homes' established vendor
+                        relationships provide favorable pricing.
+                    </p>
+                </div>
+
+                <div class="faq-card glass-card">
+                    <h3 class="faq-question font-display">
+                        <span class="faq-q">Q.</span>
+                        What are the absorption rate assumptions?
+                    </h3>
+                    <p class="faq-answer">
+                        Paradise Valley's $10M+ segment has demonstrated consistent absorption of 40-50 units annually,
+                        with average days-on-market of 180 days for properly priced luxury inventory. Our 18-month cycle
+                        includes conservative marketing assumptions.
+                    </p>
+                </div>
+
+                <div class="faq-card glass-card">
+                    <h3 class="faq-question font-display">
+                        <span class="faq-q">Q.</span>
+                        Why Hickok Homes for a Paradise Valley project?
+                    </h3>
+                    <p class="faq-answer">
+                        With 120+ years of development experience and over 7,000 living units built, Hickok Homes brings
+                        unmatched expertise
+                        in luxury residential construction. James Hickok's commitment to bespoke design and the family's
+                        reputation for quality
+                        craftsmanship ensures each project exceeds expectations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="https://www.hickokhomes.com" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 200 65" width="160" height="50" xmlns="http://www.w3.org/2000/svg">
+                            <g fill="currentColor">
+                                <rect x="10" y="15" width="8" height="35" rx="1" />
+                                <rect x="32" y="15" width="8" height="35" rx="1" />
+                                <rect x="10" y="28" width="30" height="7" rx="1" />
+                                <polygon points="25,5 10,18 40,18" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linejoin="round" />
+                            </g>
+                            <text x="55" y="38" font-family="Georgia, serif" font-size="22" font-weight="600"
+                                letter-spacing="3" fill="currentColor">HICKOK</text>
+                            <text x="55" y="55" font-family="Arial, sans-serif" font-size="14" font-weight="300"
+                                letter-spacing="6" fill="currentColor" opacity="0.7">HOMES</text>
+                        </svg>
+                    </a>
+                    <div class="footer-links">
+                        <a href="https://www.hickokhomes.com" target="_blank" rel="noopener noreferrer"
+                            class="footer-link">
+                            hickokhomes.com <i data-lucide="external-link"></i>
+                        </a>
+                        <span>|</span>
+                        <span style="font-family: 'Outfit', sans-serif; font-size: 0.75rem;">Est. 1904</span>
+                    </div>
+                </div>
+
+                <div class="footer-legal">
+                    <p>This material is for informational purposes only and does not constitute an offer to sell
+                        securities.</p>
+                    <p style="margin-top: 0.25rem;">Investment involves risk. Past performance does not guarantee future
+                        results.</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2025 Hickok Homes. A division of Hickok-Dible Companies. Kansas City's oldest real estate
+                    developer since 1904.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Icons are now inline SVGs - no initialization needed
+        function initIcons() { }
+
+        // State
+        let isGated = true;
+        let checkboxChecked = false;
+        let activeHeroImage = 0;
+        let activeProformaTab = '6418';
+
+        // Hero image slideshow
+        const heroImages = document.querySelectorAll('.hero-image');
+        const heroIndicators = document.querySelectorAll('.hero-indicator');
+        const heroCaption = document.getElementById('heroCaption');
+        const captions = [
+            '6203 E Joshua Tree Lane - $17M Comparable',
+            '6516 E Meadowlark Lane - Modern Desert Architecture'
+        ];
+
+        function setHeroImage(index) {
+            activeHeroImage = index;
+            heroImages.forEach((img, i) => {
+                img.classList.toggle('active', i === index);
+            });
+            heroIndicators.forEach((ind, i) => {
+                ind.classList.toggle('active', i === index);
+            });
+            heroCaption.textContent = captions[index];
+        }
+
+        // Auto-rotate hero images
+        setInterval(() => {
+            const nextIndex = (activeHeroImage + 1) % heroImages.length;
+            setHeroImage(nextIndex);
+        }, 6000);
+
+        // Swipe Gesture Support
+        let touchstartX = 0;
+        let touchendX = 0;
+        const heroSection = document.querySelector('.hero');
+
+        function checkDirection() {
+            if (touchendX < touchstartX) {
+                // Swiped Left -> Next Image
+                const nextIndex = (activeHeroImage + 1) % heroImages.length;
+                setHeroImage(nextIndex);
+            }
+            if (touchendX > touchstartX) {
+                // Swiped Right -> Previous Image
+                const prevIndex = (activeHeroImage - 1 + heroImages.length) % heroImages.length;
+                setHeroImage(prevIndex);
+            }
+        }
+
+        heroSection.addEventListener('touchstart', e => {
+            touchstartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        heroSection.addEventListener('touchend', e => {
+            touchendX = e.changedTouches[0].screenX;
+            checkDirection();
+        }, { passive: true });
+
+
+        // Form handling
+        const nameInput = document.getElementById('nameInput');
+        const emailInput = document.getElementById('emailInput');
+        const statusName = document.getElementById('statusName');
+        const statusEmail = document.getElementById('statusEmail');
+        const statusConfirmed = document.getElementById('statusConfirmed');
+
+        nameInput.addEventListener('input', () => {
+            statusName.textContent = nameInput.value.trim() ? '✓' : '○';
+        });
+
+        emailInput.addEventListener('input', () => {
+            statusEmail.textContent = emailInput.value.trim() && emailInput.value.includes('@') ? '✓' : '○';
+        });
+
+        function toggleCheckbox() {
+            checkboxChecked = !checkboxChecked;
+            const btn = document.getElementById('checkboxButton');
+            btn.classList.toggle('checked', checkboxChecked);
+            statusConfirmed.textContent = checkboxChecked ? '✓' : '○';
+        }
+
+        function submitForm() {
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const errorEl = document.getElementById('formError');
+
+            // Validation
+            if (!name) {
+                errorEl.textContent = 'Please enter your name';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+            if (!email || !email.includes('@')) {
+                errorEl.textContent = 'Please enter a valid email';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+            if (!checkboxChecked) {
+                errorEl.textContent = 'Please confirm you are an accredited investor';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+
+            // Success
+            errorEl.classList.add('hidden');
+            isGated = false;
+            unlockContent();
+        }
+
+        function unlockContent() {
+            // Update registration section
+            document.getElementById('registerForm').classList.add('hidden');
+            document.getElementById('registerSuccess').classList.remove('hidden');
+            document.getElementById('registerIconLock').classList.add('hidden');
+            document.getElementById('registerIconCheck').classList.remove('hidden');
+            document.getElementById('registerTitle').textContent = 'Welcome to the Portfolio';
+            document.getElementById('registerSubtitle').textContent = 'You now have full access to all investment materials.';
+
+            // Show hidden sections
+            document.getElementById('proformaSection').classList.remove('hidden');
+            document.getElementById('riskSection').classList.remove('hidden');
+            document.getElementById('timelineSection').classList.remove('hidden');
+            document.getElementById('faqSection').classList.remove('hidden');
+
+            // Remove locks from opportunity cards
+            document.getElementById('locked6418').classList.add('hidden');
+            document.getElementById('locked5840').classList.add('hidden');
+            document.getElementById('financials6418').classList.remove('blurred');
+            document.getElementById('financials5840').classList.remove('blurred');
+
+            // Initialize proforma
+            updateProforma();
+
+            // Icons are inline SVGs - no re-initialization needed
+
+            // Scroll to success message
+            document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Pro forma data
+        const proformaData = {
+            '6418': {
+                acquisition: 3900000,
+                construction: 5120000,
+                allInCost: 9020000,
+                exitPrice: 16500000,
+                netProfit: 7480000,
+                roi: 83
+            },
+            '5840': {
+                acquisition: 3500000,
+                construction: 5100000,
+                allInCost: 8600000,
+                exitPrice: 16000000,
+                netProfit: 7400000,
+                roi: 86
+            },
+            'combined': {
+                acquisition: 7400000,
+                construction: 10220000,
+                allInCost: 17620000,
+                exitPrice: 32500000,
+                netProfit: 14880000,
+                roi: 84.5
+            }
+        };
+
+        function formatCurrency(num) {
+            if (num >= 1000000) return '$' + (num / 1000000).toFixed(2) + 'M';
+            return '$' + num.toLocaleString();
+        }
+
+        function setProformaTab(tab) {
+            activeProformaTab = tab;
+            document.querySelectorAll('.proforma-tab').forEach(t => {
+                t.classList.toggle('active', t.dataset.tab === tab);
+            });
+            updateProforma();
+        }
+
+        function updateProforma() {
+            const data = proformaData[activeProformaTab];
+            const tbody = document.getElementById('proformaBody');
+
+            tbody.innerHTML = `
+                <tr>
+                    <td class="row-label">Land Acquisition</td>
+                    <td class="row-value font-display">${formatCurrency(data.acquisition)}</td>
+                    <td class="row-percent">${((data.acquisition / data.allInCost) * 100).toFixed(1)}%</td>
+                </tr>
+                <tr>
+                    <td class="row-label">Construction & Development</td>
+                    <td class="row-value font-display">${formatCurrency(data.construction)}</td>
+                    <td class="row-percent">${((data.construction / data.allInCost) * 100).toFixed(1)}%</td>
+                </tr>
+                <tr class="total-row">
+                    <td class="row-label">Total All-In Cost</td>
+                    <td class="row-value font-display">${formatCurrency(data.allInCost)}</td>
+                    <td class="row-percent">100%</td>
+                </tr>
+                <tr>
+                    <td class="row-label">Projected Exit Price</td>
+                    <td class="row-value font-display">${formatCurrency(data.exitPrice)}</td>
+                    <td class="row-percent">—</td>
+                </tr>
+                <tr class="profit-row">
+                    <td class="row-label">Net Profit</td>
+                    <td class="row-value gold-gradient font-display">${formatCurrency(data.netProfit)}</td>
+                    <td class="row-percent gold-gradient font-display" style="font-size: 1.25rem; font-weight: 600;">${data.roi}% ROI</td>
+                </tr>
+            `;
+        }
+
+        // Add blur to financials initially
+        document.getElementById('financials6418').classList.add('blurred');
+        document.getElementById('financials5840').classList.add('blurred');
+    </script>
+</body>
+
+</html>
