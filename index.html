@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>The Joshua Tree Estates | Hickok Homes Investor Portal</title>
     <meta name="description"
-        content="A rare spec development opportunity in Paradise Valley, Arizona. Projected $14.8M+ net profit with 84% ROI. Presented by Hickok Homes.">
+        content="A rare spec development opportunity in Paradise Valley, Arizona. Projected 1.84x Equity Multiple with 56% Annualized Return. Presented by Hickok Homes.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,6 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            /* MOBILE FIX: Remove gray tap highlight on iOS */
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -116,16 +115,6 @@
 
             50% {
                 transform: translateY(-10px) translateX(-50%);
-            }
-        }
-
-        @keyframes countUp {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
             }
         }
 
@@ -832,14 +821,27 @@
         }
 
         .opportunity-roi {
-            width: 3rem;
-            height: 3rem;
+            width: 3.5rem;
+            height: 3.5rem;
             border: 1px solid rgba(201, 169, 98, 0.3);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        .opportunity-roi span:first-child {
+            font-size: 1.125rem;
             font-weight: 600;
+        }
+
+        .opportunity-roi span:last-child {
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            font-family: 'Outfit', sans-serif;
+            color: rgba(201, 169, 98, 0.8);
         }
 
         .opportunity-specs {
@@ -1013,7 +1015,6 @@
             align-items: flex-start;
             gap: 0.75rem;
             padding-top: 0.5rem;
-            /* MOBILE FIX: Make entire row clickable */
             cursor: pointer;
         }
 
@@ -1030,13 +1031,7 @@
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s;
-            /* MOBILE FIX: Prevent SVG from capturing clicks */
             pointer-events: none;
-        }
-
-        /* Removed hover border change on button for mobile robustness */
-        .form-checkbox:hover .checkbox-button {
-            border-color: rgba(201, 169, 98, 0.5);
         }
 
         .checkbox-button.checked {
@@ -1063,7 +1058,6 @@
             color: rgba(255, 255, 255, 0.6);
             line-height: 1.6;
             cursor: pointer;
-            /* MOBILE FIX: Prevent text selection on tap */
             -webkit-user-select: none;
             user-select: none;
         }
@@ -1291,6 +1285,20 @@
         .proforma-table .profit-row .row-value {
             font-size: 1.5rem;
             font-weight: 600;
+        }
+
+        /* Deal Structure Table specific */
+        .deal-structure-header {
+            background: rgba(201, 169, 98, 0.05);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            font-family: 'Outfit', sans-serif;
+            color: var(--gold);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-align: center;
         }
 
         /* Risk Cards */
@@ -1811,12 +1819,12 @@
 
             <div class="hero-metrics">
                 <div class="hero-metric glass-card">
-                    <div class="hero-metric-value gold-gradient" id="metricProfit">$14.8M+</div>
-                    <div class="hero-metric-label">Projected Net Profit</div>
+                    <div class="hero-metric-value gold-gradient" id="metricProfit">1.84x</div>
+                    <div class="hero-metric-label">Equity Multiple</div>
                 </div>
                 <div class="hero-metric glass-card">
-                    <div class="hero-metric-value gold-gradient" id="metricROI">84%</div>
-                    <div class="hero-metric-label">Avg. ROI</div>
+                    <div class="hero-metric-value gold-gradient" id="metricROI">56%</div>
+                    <div class="hero-metric-label">Annualized Return</div>
                 </div>
                 <div class="hero-metric glass-card">
                     <div class="hero-metric-value gold-gradient">18</div>
@@ -1975,7 +1983,10 @@
                             </div>
                             <h3 class="opportunity-title font-display">6418 E Joshua Tree Lane</h3>
                         </div>
-                        <div class="opportunity-roi gold-gradient font-display">83%</div>
+                        <div class="opportunity-roi glass-card">
+                            <span class="gold-gradient font-display">1.83x</span>
+                            <span>Equity Mult.</span>
+                        </div>
                     </div>
 
                     <div class="opportunity-specs">
@@ -2023,7 +2034,10 @@
                             </div>
                             <h3 class="opportunity-title font-display">5840 E Joshua Tree Lane</h3>
                         </div>
-                        <div class="opportunity-roi gold-gradient font-display">86%</div>
+                        <div class="opportunity-roi glass-card">
+                            <span class="gold-gradient font-display">1.86x</span>
+                            <span>Equity Mult.</span>
+                        </div>
                     </div>
 
                     <div class="opportunity-specs">
@@ -2126,8 +2140,8 @@
         <div class="section-line"></div>
         <div class="container">
             <div class="section-header">
-                <span class="section-label">Pro Forma</span>
-                <h2 class="section-title font-display">Complete Financial Analysis</h2>
+                <span class="section-label">Pro Forma & Deal Structure</span>
+                <h2 class="section-title font-display">Financial Analysis</h2>
             </div>
 
             <div class="proforma-card glass-card">
@@ -2140,21 +2154,14 @@
                         <span class="proforma-tab-title">Lot 5840</span>
                         <span class="proforma-tab-subtitle">5840 E Joshua Tree Lane</span>
                     </button>
-                    <button class="proforma-tab" data-tab="combined" onclick="setProformaTab('combined')">
-                        <span class="proforma-tab-title">Combined</span>
-                        <span class="proforma-tab-subtitle">Portfolio Total</span>
+                    <button class="proforma-tab" data-tab="structure" onclick="setProformaTab('structure')">
+                        <span class="proforma-tab-title">Deal Structure</span>
+                        <span class="proforma-tab-subtitle">GP/LP Split Waterfall</span>
                     </button>
                 </div>
 
                 <div class="proforma-content">
                     <table class="proforma-table">
-                        <thead>
-                            <tr>
-                                <th>Line Item</th>
-                                <th>Amount</th>
-                                <th>% of Total</th>
-                            </tr>
-                        </thead>
                         <tbody id="proformaBody">
                         </tbody>
                     </table>
@@ -2214,7 +2221,7 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-label">Execution</span>
-                <h2 class="section-title font-display">18-Month Capital Deployment</h2>
+                <h2 class="section-title font-display">18-Month Capital Velocity</h2>
             </div>
 
             <div class="timeline">
@@ -2301,6 +2308,20 @@
                 <div class="faq-card glass-card">
                     <h3 class="faq-question font-display">
                         <span class="faq-q">Q.</span>
+                        Why is the 18-month cycle important?
+                    </h3>
+                    <p class="faq-answer">
+                        Capital velocity is our primary risk mitigation tool. While traditional funds lock capital for
+                        5-7 years,
+                        our 18-month "Short-Duration" strategy allows investors to realize an ~1.8x Equity Multiple and
+                        recycle capital
+                        quickly, minimizing exposure to long-term market cycles.
+                    </p>
+                </div>
+
+                <div class="faq-card glass-card">
+                    <h3 class="faq-question font-display">
+                        <span class="faq-q">Q.</span>
                         How do you justify the aggressive exit pricing?
                     </h3>
                     <p class="faq-answer">
@@ -2314,25 +2335,13 @@
                 <div class="faq-card glass-card">
                     <h3 class="faq-question font-display">
                         <span class="faq-q">Q.</span>
-                        How are construction costs hedged against inflation?
+                        What is the proposed deal structure?
                     </h3>
                     <p class="faq-answer">
-                        We employ fixed-price contracts with pre-negotiated material cost locks, established
-                        relationships with premium subcontractors,
-                        and a 10% contingency buffer built into all projections. Hickok Homes' established vendor
-                        relationships provide favorable pricing.
-                    </p>
-                </div>
-
-                <div class="faq-card glass-card">
-                    <h3 class="faq-question font-display">
-                        <span class="faq-q">Q.</span>
-                        What are the absorption rate assumptions?
-                    </h3>
-                    <p class="faq-answer">
-                        Paradise Valley's $10M+ segment has demonstrated consistent absorption of 40-50 units annually,
-                        with average days-on-market of 180 days for properly priced luxury inventory. Our 18-month cycle
-                        includes conservative marketing assumptions.
+                        We propose a 7% Preferred Return to investors, followed by an 80/20 split until a 20% IRR hurdle
+                        is met.
+                        Above that hurdle, profits are split 50/50, aligning incentives to maximize the total portfolio
+                        value.
                     </p>
                 </div>
 
@@ -2551,7 +2560,7 @@
                 allInCost: 9020000,
                 exitPrice: 16500000,
                 netProfit: 7480000,
-                roi: 83
+                equityMultiple: '1.83x'
             },
             '5840': {
                 acquisition: 3500000,
@@ -2559,15 +2568,13 @@
                 allInCost: 8600000,
                 exitPrice: 16000000,
                 netProfit: 7400000,
-                roi: 86
+                equityMultiple: '1.86x'
             },
-            'combined': {
-                acquisition: 7400000,
-                construction: 10220000,
-                allInCost: 17620000,
-                exitPrice: 32500000,
-                netProfit: 14880000,
-                roi: 84.5
+            'structure': {
+                pref: '7%',
+                hurdle: '20%',
+                split1: '80/20',
+                split2: '50/50'
             }
         };
 
@@ -2588,33 +2595,58 @@
             const data = proformaData[activeProformaTab];
             const tbody = document.getElementById('proformaBody');
 
-            tbody.innerHTML = `
-                <tr>
-                    <td class="row-label">Land Acquisition</td>
-                    <td class="row-value font-display">${formatCurrency(data.acquisition)}</td>
-                    <td class="row-percent">${((data.acquisition / data.allInCost) * 100).toFixed(1)}%</td>
-                </tr>
-                <tr>
-                    <td class="row-label">Construction & Development</td>
-                    <td class="row-value font-display">${formatCurrency(data.construction)}</td>
-                    <td class="row-percent">${((data.construction / data.allInCost) * 100).toFixed(1)}%</td>
-                </tr>
-                <tr class="total-row">
-                    <td class="row-label">Total All-In Cost</td>
-                    <td class="row-value font-display">${formatCurrency(data.allInCost)}</td>
-                    <td class="row-percent">100%</td>
-                </tr>
-                <tr>
-                    <td class="row-label">Projected Exit Price</td>
-                    <td class="row-value font-display">${formatCurrency(data.exitPrice)}</td>
-                    <td class="row-percent">—</td>
-                </tr>
-                <tr class="profit-row">
-                    <td class="row-label">Net Profit</td>
-                    <td class="row-value gold-gradient font-display">${formatCurrency(data.netProfit)}</td>
-                    <td class="row-percent gold-gradient font-display" style="font-size: 1.25rem; font-weight: 600;">${data.roi}% ROI</td>
-                </tr>
-            `;
+            // Handle Structure Tab Differently
+            if (activeProformaTab === 'structure') {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="3" class="deal-structure-header">Proposed Waterfall</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Preferred Return</td>
+                        <td class="row-value font-display">${data.pref}</td>
+                        <td class="row-percent">Paid First</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Split up to ${data.hurdle} IRR</td>
+                        <td class="row-value font-display">${data.split1}</td>
+                        <td class="row-percent">Investor / GP</td>
+                    </tr>
+                    <tr class="profit-row">
+                        <td class="row-label">Split Above ${data.hurdle}</td>
+                        <td class="row-value gold-gradient font-display">${data.split2}</td>
+                        <td class="row-percent gold-gradient">Profit Share</td>
+                    </tr>
+                `;
+            } else {
+                // Standard Pro Forma for Lots
+                tbody.innerHTML = `
+                    <tr>
+                        <td class="row-label">Land Acquisition</td>
+                        <td class="row-value font-display">${formatCurrency(data.acquisition)}</td>
+                        <td class="row-percent">${((data.acquisition / data.allInCost) * 100).toFixed(1)}%</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Construction & Development</td>
+                        <td class="row-value font-display">${formatCurrency(data.construction)}</td>
+                        <td class="row-percent">${((data.construction / data.allInCost) * 100).toFixed(1)}%</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td class="row-label">Total All-In Cost</td>
+                        <td class="row-value font-display">${formatCurrency(data.allInCost)}</td>
+                        <td class="row-percent">100%</td>
+                    </tr>
+                    <tr>
+                        <td class="row-label">Projected Exit Price</td>
+                        <td class="row-value font-display">${formatCurrency(data.exitPrice)}</td>
+                        <td class="row-percent">—</td>
+                    </tr>
+                    <tr class="profit-row">
+                        <td class="row-label">Net Profit</td>
+                        <td class="row-value gold-gradient font-display">${formatCurrency(data.netProfit)}</td>
+                        <td class="row-percent gold-gradient font-display" style="font-size: 1rem; font-weight: 600;">${data.equityMultiple} Eq. Mult.</td>
+                    </tr>
+                `;
+            }
         }
 
         // Add blur to financials initially
