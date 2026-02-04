@@ -1,2333 +1,468 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>The Joshua Tree Estates | Hickok Homes Investor Portal</title>
-    <meta name="description"
-        content="A rare spec development opportunity in Paradise Valley, Arizona. Projected 1.84x Equity Multiple with 56% Annualized Return. Presented by Hickok Homes.">
-
+    <meta name="description" content="A rare spec development opportunity in Paradise Valley, Arizona. Projected 1.84x Equity Multiple with 56% Annualized Return. Presented by Hickok Homes.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@200;300;400;500;600&display=swap"
-        rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        :root {
-            --gold: #c9a962;
-            --gold-light: #f4e4ba;
-            --zinc-950: #09090b;
-            --zinc-900: #18181b;
-            --zinc-800: #27272a;
-            --amber-500: #f59e0b;
-            --amber-600: #d97706;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-
-        body {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            background-color: var(--zinc-950);
-            color: white;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .font-display {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-        }
-
-        .font-body {
-            font-family: 'Outfit', system-ui, sans-serif;
-        }
-
-        /* Gold gradient text */
-        .gold-gradient {
-            background: linear-gradient(135deg, #c9a962 0%, #f4e4ba 50%, #c9a962 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Glass card effect */
-        .glass-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(201, 169, 98, 0.15);
-        }
-
-        /* Animations */
-        @keyframes shimmer {
-            0% {
-                transform: translateX(-100%);
-            }
-
-            100% {
-                transform: translateX(100%);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInImage {
-            from {
-                opacity: 0;
-                transform: scale(1.05);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes bounce {
-
-            0%,
-            100% {
-                transform: translateY(0) translateX(-50%);
-            }
-
-            50% {
-                transform: translateY(-10px) translateX(-50%);
-            }
-        }
-
-        .shimmer {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(201, 169, 98, 0.1), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        .fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        .bounce {
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        /* Navigation */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
-            background: rgba(9, 9, 11, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .nav-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 1rem 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-            color: white;
-            transition: color 0.3s;
-        }
-
-        .nav-logo:hover {
-            color: var(--gold);
-        }
-
-        .nav-links {
-            display: none;
-            align-items: center;
-            gap: 1.5rem;
-            margin-left: auto;
-            margin-right: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .nav-links {
-                display: flex;
-            }
-        }
-
-        .nav-link {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            transition: color 0.3s;
-        }
-
-        .nav-link:hover {
-            color: var(--gold);
-        }
-
-        .nav-cta {
-            margin-left: auto;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.875rem;
-            letter-spacing: 0.05em;
-            padding: 0.625rem 1.5rem;
-            border: 1px solid rgba(201, 169, 98, 0.5);
-            background: transparent;
-            color: var(--gold);
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        @media (min-width: 768px) {
-            .nav-cta {
-                margin-left: 0;
-            }
-        }
-
-        .nav-cta:hover {
-            background: rgba(201, 169, 98, 0.1);
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            touch-action: pan-y;
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-        }
-
-        .hero-image {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-        }
-
-        .hero-image.active {
-            opacity: 1;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom,
-                    rgba(9, 9, 11, 0.4) 0%,
-                    rgba(9, 9, 11, 0.2) 30%,
-                    rgba(9, 9, 11, 0.2) 50%,
-                    rgba(9, 9, 11, 0.95) 100%);
-        }
-
-        .hero-indicators {
-            position: absolute;
-            bottom: 8rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 0.75rem;
-            z-index: 20;
-        }
-
-        .hero-indicator {
-            width: 0.5rem;
-            height: 0.5rem;
-            border-radius: 9999px;
-            background: rgba(255, 255, 255, 0.3);
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .hero-indicator.active {
-            background: var(--gold);
-            width: 2rem;
-        }
-
-        .hero-indicator:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
-
-        .hero-caption {
-            position: absolute;
-            bottom: 10rem;
-            left: 2rem;
-            z-index: 20;
-            display: none;
-        }
-
-        @media (min-width: 768px) {
-            .hero-caption {
-                display: block;
-            }
-        }
-
-        .hero-caption-inner {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            max-width: 1152px;
-            margin: 0 auto;
-            padding: 5rem 1.5rem 0;
-            text-align: center;
-        }
-
-        .hero-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .hero-badge-line {
-            height: 1px;
-            width: 3rem;
-            background: linear-gradient(to right, transparent, rgba(201, 169, 98, 0.5));
-        }
-
-        .hero-badge-line:last-child {
-            background: linear-gradient(to left, transparent, rgba(201, 169, 98, 0.5));
-        }
-
-        .hero-badge-text {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: rgba(201, 169, 98, 0.8);
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 8vw, 6rem);
-            font-weight: 300;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-        }
-
-        .hero-title-main {
-            display: block;
-            color: white;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-title-accent {
-            font-style: italic;
-            font-weight: 400;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 300;
-            max-width: 42rem;
-            margin: 2rem auto 1.5rem;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-presented {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-bottom: 3rem;
-        }
-
-        .hero-presented-text {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .hero-metrics {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        @media (min-width: 768px) {
-            .hero-metrics {
-                gap: 4rem;
-            }
-        }
-
-        .hero-metric {
-            text-align: center;
-            padding: 1rem 1.5rem;
-            border-radius: 0.5rem;
-        }
-
-        .hero-metric-value {
-            font-size: clamp(1.875rem, 5vw, 3rem);
-            font-weight: 600;
-        }
-
-        .hero-metric-label {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.5);
-            margin-top: 0.5rem;
-        }
-
-        .hero-cta {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 1rem 2.5rem;
-            background: var(--amber-600);
-            color: var(--zinc-950);
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.875rem;
-            font-weight: 500;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .hero-cta:hover {
-            box-shadow: 0 0 40px rgba(201, 169, 98, 0.3);
-        }
-
-        .hero-cta span {
-            position: relative;
-            z-index: 10;
-        }
-
-        .hero-cta svg {
-            position: relative;
-            z-index: 10;
-            transition: transform 0.3s;
-        }
-
-        .hero-cta:hover svg {
-            transform: translateX(4px);
-        }
-
-        .hero-scroll {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .hero-scroll-text {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.625rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.3);
-        }
-
-        .hero-scroll svg {
-            color: rgba(201, 169, 98, 0.5);
-        }
-
-        /* Sections */
-        section {
-            position: relative;
-            padding: 5rem 1rem;
-        }
-
-        @media (min-width: 768px) {
-            section {
-                padding: 8rem 1.5rem;
-            }
-        }
-
-        .section-dark {
-            background: var(--zinc-950);
-        }
-
-        .section-darker {
-            background: var(--zinc-900);
-        }
-
-        .section-line {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(201, 169, 98, 0.2), transparent);
-        }
-
-        .container {
-            max-width: 1152px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-label {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: rgba(201, 169, 98, 0.8);
-        }
-
-        .section-title {
-            font-size: clamp(1.875rem, 5vw, 3rem);
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.9);
-            margin-top: 1rem;
-        }
-
-        .section-subtitle {
-            font-family: 'Outfit', sans-serif;
-            color: rgba(255, 255, 255, 0.5);
-            margin-top: 1.5rem;
-            max-width: 42rem;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Property Showcase */
-        .property-grid {
-            display: grid;
-            gap: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .property-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .property-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 0.5rem;
-            cursor: pointer;
-        }
-
-        .property-image {
-            aspect-ratio: 4/3;
-            overflow: hidden;
-        }
-
-        .property-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .property-card:hover .property-image img {
-            transform: scale(1.05);
-        }
-
-        .property-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(9, 9, 11, 0.95), transparent 60%);
-        }
-
-        .property-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 1.5rem;
-        }
-
-        .property-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .property-badge svg {
-            width: 1rem;
-            height: 1rem;
-            color: var(--gold);
-        }
-
-        .property-badge-text {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--gold);
-        }
-
-        .property-title {
-            font-size: 1.5rem;
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        .property-stats {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .property-price {
-            font-size: 1.875rem;
-            font-weight: 600;
-        }
-
-        .property-detail {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .property-border {
-            position: absolute;
-            inset: 0;
-            border: 2px solid transparent;
-            border-radius: 0.5rem;
-            transition: border-color 0.3s;
-            pointer-events: none;
-        }
-
-        .property-card:hover .property-border {
-            border-color: rgba(201, 169, 98, 0.3);
-        }
-
-        /* About Section */
-        .about-grid {
-            display: grid;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        @media (min-width: 768px) {
-            .about-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 4rem;
-            }
-        }
-
-        .about-content h2 {
-            font-size: clamp(1.875rem, 5vw, 3rem);
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.9);
-            margin-top: 1rem;
-            margin-bottom: 2rem;
-            line-height: 1.2;
-        }
-
-        .about-content h2 span {
-            font-style: italic;
-            color: var(--gold);
-        }
-
-        .about-text {
-            font-family: 'Outfit', sans-serif;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-text strong {
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 500;
-        }
-
-        .about-text .highlight {
-            color: var(--gold);
-        }
-
-        .about-quote {
-            font-style: italic;
-            border-left: 2px solid rgba(201, 169, 98, 0.5);
-            padding-left: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .about-quote-author {
-            display: block;
-            margin-top: 0.5rem;
-            font-style: normal;
-            font-size: 0.875rem;
-            color: rgba(201, 169, 98, 0.8);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .stat-card {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .stat-card svg {
-            width: 2rem;
-            height: 2rem;
-            color: rgba(201, 169, 98, 0.7);
-            margin: 0 auto 0.75rem;
-        }
-
-        .stat-value {
-            font-size: 1.875rem;
-            font-weight: 600;
-        }
-
-        .stat-label {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.4);
-            margin-top: 0.5rem;
-        }
-
-        /* Opportunity Cards */
-        .opportunity-grid {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .opportunity-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-        }
-
-        .opportunity-card {
-            position: relative;
-            padding: 1.5rem;
-            transition: all 0.5s;
-            cursor: pointer;
-        }
-
-        @media (min-width: 768px) {
-            .opportunity-card {
-                padding: 2rem;
-            }
-        }
-
-        .opportunity-card.active {
-            border-color: rgba(201, 169, 98, 0.4);
-            box-shadow: 0 0 60px rgba(201, 169, 98, 0.1);
-        }
-
-        .opportunity-card:hover {
-            border-color: rgba(201, 169, 98, 0.3);
-        }
-
-        .opportunity-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-        }
-
-        .opportunity-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .opportunity-badge svg {
-            width: 1rem;
-            height: 1rem;
-            color: var(--gold);
-        }
-
-        .opportunity-badge-text {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--gold);
-        }
-
-        .opportunity-title {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        @media (min-width: 768px) {
-            .opportunity-title {
-                font-size: 1.5rem;
-            }
-        }
-
-        .opportunity-roi {
-            width: 3.5rem;
-            height: 3.5rem;
-            border: 1px solid rgba(201, 169, 98, 0.3);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            line-height: 1.1;
-        }
-
-        .opportunity-roi span:first-child {
-            font-size: 1.125rem;
-            font-weight: 600;
-        }
-
-        .opportunity-roi span:last-child {
-            font-size: 0.5rem;
-            text-transform: uppercase;
-            font-family: 'Outfit', sans-serif;
-            color: rgba(201, 169, 98, 0.8);
-        }
-
-        .opportunity-specs {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .opportunity-spec {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1rem;
-        }
-
-        .opportunity-spec-label {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.625rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.4);
-            margin-bottom: 0.25rem;
-        }
-
-        .opportunity-spec-value {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .opportunity-financials {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 1.5rem;
-        }
-
-        .opportunity-financials.blurred {
-            filter: blur(8px);
-            user-select: none;
-        }
-
-        .opportunity-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.75rem;
-        }
-
-        .opportunity-row-label {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .opportunity-row-value {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .opportunity-profit-row {
-            display: flex;
-            justify-content: space-between;
-            padding-top: 0.75rem;
-            border-top: 1px solid rgba(201, 169, 98, 0.2);
-            margin-top: 0.75rem;
-        }
-
-        .opportunity-profit-label {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.875rem;
-            color: var(--gold);
-        }
-
-        .opportunity-profit-value {
-            font-size: 1.125rem;
-            font-weight: 600;
-        }
-
-        .opportunity-locked {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: rgba(9, 9, 11, 0.6);
-            backdrop-filter: blur(4px);
-            border-radius: inherit;
-        }
-
-        .opportunity-locked svg {
-            width: 2rem;
-            height: 2rem;
-            color: rgba(201, 169, 98, 0.5);
-            margin-bottom: 0.5rem;
-        }
-
-        .opportunity-locked-text {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Registration Form */
-        .register-icon {
-            width: 4rem;
-            height: 4rem;
-            border: 1px solid rgba(201, 169, 98, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-        }
-
-        .register-icon svg {
-            width: 1.5rem;
-            height: 1.5rem;
-            color: var(--gold);
-        }
-
-        .register-form {
-            max-width: 32rem;
-            margin: 0 auto;
-        }
-
-        .form-error {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #f87171;
-            padding: 0.75rem 1rem;
-            border-radius: 0.25rem;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.875rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.4);
-            margin-bottom: 0.5rem;
-        }
-
-        .form-input {
-            width: 100%;
-            background: var(--zinc-800);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 0.75rem 1rem;
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            color: white;
-            border-radius: 0.25rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: rgba(201, 169, 98, 0.5);
-        }
-
-        .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.3);
-        }
-
-        .form-checkbox {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            padding-top: 0.5rem;
-            cursor: pointer;
-        }
-
-        .checkbox-button {
-            flex-shrink: 0;
-            width: 1.25rem;
-            height: 1.25rem;
-            margin-top: 0.125rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: var(--zinc-800);
-            border-radius: 0.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            pointer-events: none;
-        }
-
-        .checkbox-button.checked {
-            background: var(--gold);
-            border-color: var(--gold);
-        }
-
-        .checkbox-button svg {
-            width: 0.75rem;
-            height: 0.75rem;
-            color: var(--zinc-950);
-            stroke-width: 3;
-            display: none;
-            pointer-events: none;
-        }
-
-        .checkbox-button.checked svg {
-            display: block;
-        }
-
-        .checkbox-label {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.6;
-            cursor: pointer;
-            -webkit-user-select: none;
-            user-select: none;
-        }
-
-        .checkbox-label .highlight {
-            color: var(--gold);
-        }
-
-        .form-submit {
-            width: 100%;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            padding: 1rem 2.5rem;
-            margin-top: 2rem;
-            background: var(--amber-600);
-            color: var(--zinc-950);
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.875rem;
-            font-weight: 500;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            border: none;
-            border-radius: 0.25rem;
-            cursor: pointer;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-
-        .form-submit:hover {
-            box-shadow: 0 0 40px rgba(201, 169, 98, 0.3);
-        }
-
-        .form-submit span,
-        .form-submit svg {
-            position: relative;
-            z-index: 10;
-        }
-
-        .form-submit:hover svg {
-            transform: translateX(4px);
-        }
-
-        .form-submit svg {
-            transition: transform 0.3s;
-        }
-
-        .form-status {
-            text-align: center;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.3);
-            margin-top: 1rem;
-        }
-
-        .register-success {
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .register-success svg {
-            width: 3rem;
-            height: 3rem;
-            color: var(--gold);
-            margin: 0 auto 1rem;
-        }
-
-        .register-success-title {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 0.5rem;
-        }
-
-        .register-success-text {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Pro Forma Table */
-        .proforma-card {
-            overflow: hidden;
-        }
-
-        .proforma-tabs {
-            display: flex;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .proforma-tab {
-            flex: 1;
-            padding: 1.25rem 1rem;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.875rem;
-            letter-spacing: 0.05em;
-            background: transparent;
-            border: none;
-            color: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s;
-            border-bottom: 2px solid transparent;
-        }
-
-        .proforma-tab:hover {
-            color: rgba(255, 255, 255, 0.7);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .proforma-tab.active {
-            background: rgba(201, 169, 98, 0.1);
-            color: var(--gold);
-            border-bottom-color: var(--gold);
-        }
-
-        .proforma-tab-title {
-            display: block;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.125rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .proforma-tab-subtitle {
-            font-size: 0.75rem;
-            opacity: 0.7;
-            display: none;
-        }
-
-        @media (min-width: 768px) {
-            .proforma-tab-subtitle {
-                display: block;
-            }
-        }
-
-        .proforma-content {
-            padding: 1rem;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        @media (min-width: 768px) {
-            .proforma-content {
-                padding: 2rem;
-            }
-        }
-
-        .proforma-table {
-            width: 100%;
-            min-width: 100%;
-            border-collapse: collapse;
-        }
-
-        .proforma-table th {
-            text-align: left;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 400;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.4);
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .proforma-table th:not(:first-child) {
-            text-align: right;
-        }
-
-        .proforma-table td {
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .proforma-table td:not(:first-child) {
-            text-align: right;
-        }
-
-        .proforma-table tr:hover {
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .proforma-table .row-label {
-            font-family: 'Outfit', sans-serif;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .proforma-table .row-value {
-            font-size: 1.125rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .proforma-table .row-percent {
-            font-family: 'Outfit', sans-serif;
-            color: rgba(255, 255, 255, 0.5);
-        }
-
-        .proforma-table .total-row {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .proforma-table .total-row td {
-            font-weight: 500;
-            color: white;
-        }
-
-        .proforma-table .total-row .row-value {
-            font-size: 1.25rem;
-        }
-
-        .proforma-table .profit-row {
-            background: rgba(201, 169, 98, 0.1);
-        }
-
-        .proforma-table .profit-row td {
-            padding: 1.25rem 0;
-            border-bottom: none;
-        }
-
-        .proforma-table .profit-row .row-label {
-            color: var(--gold);
-            font-weight: 500;
-        }
-
-        .proforma-table .profit-row .row-value {
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        /* Deal Structure Table specific */
-        .deal-structure-header {
-            background: rgba(201, 169, 98, 0.05);
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 4px;
-            font-family: 'Outfit', sans-serif;
-            color: var(--gold);
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            text-align: center;
-        }
-
-        /* Risk Cards */
-        .risk-grid {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .risk-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .risk-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .risk-card {
-            padding: 1.5rem;
-            height: 100%;
-            transition: all 0.3s;
-        }
-
-        @media (min-width: 768px) {
-            .risk-card {
-                padding: 2rem;
-            }
-        }
-
-        .risk-card:hover {
-            border-color: rgba(201, 169, 98, 0.3);
-        }
-
-        .risk-icon {
-            width: 3rem;
-            height: 3rem;
-            border: 1px solid rgba(201, 169, 98, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s;
-        }
-
-        .risk-card:hover .risk-icon {
-            border-color: rgba(201, 169, 98, 0.5);
-            background: rgba(201, 169, 98, 0.05);
-        }
-
-        .risk-icon svg {
-            width: 1.25rem;
-            height: 1.25rem;
-            color: var(--gold);
-        }
-
-        .risk-title {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 1rem;
-        }
-
-        .risk-text {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.5);
-            line-height: 1.6;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline-line {
-            position: absolute;
-            left: 1rem;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: linear-gradient(to bottom, rgba(201, 169, 98, 0.5), rgba(201, 169, 98, 0.3), rgba(201, 169, 98, 0.1));
-        }
-
-        @media (min-width: 768px) {
-            .timeline-line {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
-
-        .timeline-item {
-            position: relative;
-            display: flex;
-            align-items: center;
-            margin-bottom: 3rem;
-        }
-
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-
-        @media (min-width: 768px) {
-            .timeline-item:nth-child(odd) {
-                flex-direction: row;
-            }
-
-            .timeline-item:nth-child(even) {
-                flex-direction: row-reverse;
-            }
-        }
-
-        .timeline-content {
-            margin-left: 3rem;
-            flex: 1;
-        }
-
-        @media (min-width: 768px) {
-            .timeline-content {
-                width: 45%;
-                margin-left: 0;
-            }
-
-            /* UPDATED SPACING HERE */
-            .timeline-item:nth-child(odd) .timeline-content {
-                text-align: right;
-                padding-right: 5rem;
-                /* Increased from 3rem */
-            }
-
-            .timeline-item:nth-child(even) .timeline-content {
-                text-align: left;
-                padding-left: 5rem;
-                /* Increased from 3rem */
-            }
-        }
-
-        .timeline-phase {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--gold);
-        }
-
-        .timeline-title {
-            font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin: 0.5rem 0 0.75rem;
-        }
-
-        .timeline-text {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.5);
-            line-height: 1.6;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: 0;
-            width: 2rem;
-            height: 2rem;
-            border-radius: 50%;
-            background: var(--zinc-950);
-            border: 2px solid var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 0 4px rgba(201, 169, 98, 0.2), 0 0 20px rgba(201, 169, 98, 0.3);
-        }
-
-        @media (min-width: 768px) {
-            .timeline-dot {
-                left: 50%;
-                transform: translateX(-50%);
-                width: 3rem;
-                height: 3rem;
-            }
-        }
-
-        .timeline-dot svg {
-            width: 1rem;
-            height: 1rem;
-            color: var(--gold);
-        }
-
-        @media (min-width: 768px) {
-            .timeline-dot svg {
-                width: 1.25rem;
-                height: 1.25rem;
-            }
-        }
-
-        .timeline-duration {
-            display: none;
-        }
-
-        @media (min-width: 768px) {
-            .timeline-duration {
-                display: block;
-                width: 45%;
-            }
-
-            /* UPDATED SPACING HERE TOO FOR SYMMETRY */
-            .timeline-item:nth-child(odd) .timeline-duration {
-                padding-left: 5rem;
-                /* Increased from 3rem */
-            }
-
-            .timeline-item:nth-child(even) .timeline-duration {
-                padding-right: 5rem;
-                /* Increased from 3rem */
-                text-align: right;
-            }
-        }
-
-        .timeline-duration-card {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-        }
-
-        .timeline-duration-card svg {
-            width: 1rem;
-            height: 1rem;
-            color: rgba(201, 169, 98, 0.7);
-        }
-
-        .timeline-duration-text {
-            font-size: 1.125rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .timeline-mobile-duration {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .timeline-mobile-duration {
-                display: none;
-            }
-        }
-
-        .timeline-mobile-duration svg {
-            width: 1rem;
-            height: 1rem;
-            color: rgba(201, 169, 98, 0.7);
-        }
-
-        .timeline-mobile-duration span {
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* FAQ */
-        .faq-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .faq-card {
-            padding: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .faq-card {
-                padding: 2rem;
-            }
-        }
-
-        .faq-question {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            font-size: 1.125rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .faq-question {
-                font-size: 1.25rem;
-            }
-        }
-
-        .faq-q {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.875rem;
-            color: var(--gold);
-            margin-top: 0.25rem;
-        }
-
-        .faq-answer {
-            font-family: 'Outfit', sans-serif;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.8;
-            padding-left: 1.75rem;
-        }
-
-        /* Footer */
-        footer {
-            position: relative;
-            padding: 3rem 1rem;
-            background: var(--zinc-950);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        @media (min-width: 768px) {
-            footer {
-                padding: 4rem 1.5rem;
-            }
-        }
-
-        .footer-inner {
-            max-width: 1152px;
-            margin: 0 auto;
-        }
-
-        .footer-top {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .footer-top {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-        }
-
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .footer-brand {
-                align-items: flex-start;
-            }
-        }
-
-        .footer-brand a {
-            color: white;
-            transition: color 0.3s;
-        }
-
-        .footer-brand a:hover {
-            color: var(--gold);
-        }
-
-        .footer-links {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: rgba(255, 255, 255, 0.4);
-        }
-
-        .footer-link {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
-            color: inherit;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            transition: color 0.3s;
-        }
-
-        .footer-link:hover {
-            color: var(--gold);
-        }
-
-        .footer-link svg {
-            width: 0.75rem;
-            height: 0.75rem;
-        }
-
-        .footer-legal {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.3);
-            text-align: center;
-            max-width: 28rem;
-        }
-
-        @media (min-width: 768px) {
-            .footer-legal {
-                text-align: right;
-            }
-        }
-
-        .footer-bottom {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: center;
-        }
-
-        .footer-copyright {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
-            color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Utility */
-        .hidden {
-            display: none !important;
-        }
-
-        .text-center {
-            text-align: center;
-        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+        :root{--gold:#c9a962;--gold-light:#f4e4ba;--zinc-950:#09090b;--zinc-900:#18181b;--zinc-800:#27272a;--amber-500:#f59e0b;--amber-600:#d97706}
+        html{scroll-behavior:smooth;scroll-padding-top:80px}
+        body{font-family:'Cormorant Garamond',Georgia,serif;background-color:var(--zinc-950);color:white;line-height:1.6;overflow-x:hidden}
+        .font-display{font-family:'Cormorant Garamond',Georgia,serif}
+        .font-body{font-family:'Outfit',system-ui,sans-serif}
+        .gold-gradient{background:linear-gradient(135deg,#c9a962 0%,#f4e4ba 50%,#c9a962 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .glass-card{background:linear-gradient(135deg,rgba(255,255,255,0.03) 0%,rgba(255,255,255,0.01) 100%);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(201,169,98,0.15)}
+        @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+        @keyframes bounce{0%,100%{transform:translateY(0) translateX(-50%)}50%{transform:translateY(-10px) translateX(-50%)}}
+        .shimmer{position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(201,169,98,0.1),transparent);animation:shimmer 3s infinite}
+        .bounce{animation:bounce 2s ease-in-out infinite}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(9,9,11,0.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.05)}
+        .nav-inner{max-width:1280px;margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between}
+        .nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none;color:white;transition:color 0.3s}
+        .nav-logo:hover{color:var(--gold)}
+        .nav-links{display:none;align-items:center;gap:1.5rem;margin-left:auto;margin-right:1.5rem}
+        @media(min-width:768px){.nav-links{display:flex}}
+        .nav-link{font-family:'Outfit',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.6);text-decoration:none;display:flex;align-items:center;gap:0.25rem;transition:color 0.3s}
+        .nav-link:hover{color:var(--gold)}
+        .nav-cta{margin-left:auto;font-family:'Outfit',sans-serif;font-size:0.875rem;letter-spacing:0.05em;padding:0.625rem 1.5rem;border:1px solid rgba(201,169,98,0.5);background:transparent;color:var(--gold);cursor:pointer;transition:all 0.3s}
+        @media(min-width:768px){.nav-cta{margin-left:0}}
+        .nav-cta:hover{background:rgba(201,169,98,0.1)}
+        .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;touch-action:pan-y}
+        .hero-bg{position:absolute;inset:0}
+        .hero-image{position:absolute;inset:0;opacity:0;transition:opacity 1.5s ease-in-out}
+        .hero-image.active{opacity:1}
+        .hero-image img{width:100%;height:100%;object-fit:cover}
+        .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(9,9,11,0.4) 0%,rgba(9,9,11,0.2) 30%,rgba(9,9,11,0.2) 50%,rgba(9,9,11,0.95) 100%)}
+        .hero-indicators{position:absolute;bottom:8rem;left:50%;transform:translateX(-50%);display:flex;gap:0.75rem;z-index:20}
+        .hero-indicator{width:0.5rem;height:0.5rem;border-radius:9999px;background:rgba(255,255,255,0.3);border:none;cursor:pointer;transition:all 0.3s}
+        .hero-indicator.active{background:var(--gold);width:2rem}
+        .hero-caption{position:absolute;bottom:10rem;left:2rem;z-index:20;display:none}
+        @media(min-width:768px){.hero-caption{display:block}}
+        .hero-caption-inner{display:flex;align-items:center;gap:0.5rem;padding:0.5rem 1rem}
+        .hero-content{position:relative;z-index:10;max-width:1152px;margin:0 auto;padding:5rem 1.5rem 0;text-align:center}
+        .hero-badge{display:flex;align-items:center;justify-content:center;gap:1rem;margin-bottom:2rem}
+        .hero-badge-line{height:1px;width:3rem;background:linear-gradient(to right,transparent,rgba(201,169,98,0.5))}
+        .hero-badge-line:last-child{background:linear-gradient(to left,transparent,rgba(201,169,98,0.5))}
+        .hero-badge-text{font-family:'Outfit',sans-serif;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(201,169,98,0.8)}
+        .hero-title{font-size:clamp(2.5rem,8vw,6rem);font-weight:300;line-height:1.1;margin-bottom:1rem}
+        .hero-title-main{display:block;color:white;text-shadow:0 2px 20px rgba(0,0,0,0.5)}
+        .hero-title-accent{font-style:italic;font-weight:400}
+        .hero-subtitle{font-size:clamp(1.125rem,2.5vw,1.5rem);color:rgba(255,255,255,0.7);font-weight:300;max-width:42rem;margin:2rem auto 1.5rem;text-shadow:0 2px 10px rgba(0,0,0,0.5)}
+        .hero-presented{display:flex;align-items:center;justify-content:center;gap:0.75rem;margin-bottom:3rem}
+        .hero-presented-text{font-family:'Outfit',sans-serif;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5)}
+        .hero-metrics{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin-bottom:3rem}
+        @media(min-width:768px){.hero-metrics{gap:4rem}}
+        .hero-metric{text-align:center;padding:1rem 1.5rem;border-radius:0.5rem}
+        .hero-metric-value{font-size:clamp(1.875rem,5vw,3rem);font-weight:600}
+        .hero-metric-label{font-family:'Outfit',sans-serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:0.5rem}
+        .hero-cta{position:relative;display:inline-flex;align-items:center;gap:0.75rem;padding:1rem 2.5rem;background:var(--amber-600);color:var(--zinc-950);font-family:'Outfit',sans-serif;font-size:0.875rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;overflow:hidden;transition:all 0.3s}
+        .hero-cta:hover{box-shadow:0 0 40px rgba(201,169,98,0.3)}
+        .hero-cta span,.hero-cta svg{position:relative;z-index:10}
+        .hero-cta svg{transition:transform 0.3s}
+        .hero-cta:hover svg{transform:translateX(4px)}
+        .hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem}
+        .hero-scroll-text{font-family:'Outfit',sans-serif;font-size:0.625rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3)}
+        .hero-scroll svg{color:rgba(201,169,98,0.5)}
+        section{position:relative;padding:5rem 1rem}
+        @media(min-width:768px){section{padding:8rem 1.5rem}}
+        .section-dark{background:var(--zinc-950)}
+        .section-darker{background:var(--zinc-900)}
+        .section-line{position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(201,169,98,0.2),transparent)}
+        .container{max-width:1152px;margin:0 auto}
+        .section-header{text-align:center;margin-bottom:4rem}
+        .section-label{font-family:'Outfit',sans-serif;font-size:0.75rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(201,169,98,0.8)}
+        .section-title{font-size:clamp(1.875rem,5vw,3rem);font-weight:300;color:rgba(255,255,255,0.9);margin-top:1rem}
+        .section-subtitle{font-family:'Outfit',sans-serif;color:rgba(255,255,255,0.5);margin-top:1.5rem;max-width:42rem;margin-left:auto;margin-right:auto}
+        .property-grid{display:grid;gap:2rem}
+        @media(min-width:768px){.property-grid{grid-template-columns:repeat(2,1fr)}}
+        .property-card{position:relative;overflow:hidden;border-radius:0.5rem;cursor:pointer}
+        .property-image{aspect-ratio:4/3;overflow:hidden}
+        .property-image img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
+        .property-card:hover .property-image img{transform:scale(1.05)}
+        .property-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(9,9,11,0.95),transparent 60%)}
+        .property-info{position:absolute;bottom:0;left:0;right:0;padding:1.5rem}
+        .property-badge{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem}
+        .property-badge svg{width:1rem;height:1rem;color:var(--gold)}
+        .property-badge-text{font-family:'Outfit',sans-serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold)}
+        .property-title{font-size:1.5rem;color:white;margin-bottom:0.5rem}
+        .property-stats{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+        .property-price{font-size:1.875rem;font-weight:600}
+        .property-detail{font-family:'Outfit',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.5)}
+        .property-border{position:absolute;inset:0;border:2px solid transparent;border-radius:0.5rem;transition:border-color 0.3s;pointer-events:none}
+        .property-card:hover .property-border{border-color:rgba(201,169,98,0.3)}
+        .about-grid{display:grid;gap:3rem;align-items:center}
+        @media(min-width:768px){.about-grid{grid-template-columns:repeat(2,1fr);gap:4rem}}
+        .about-content h2{font-size:clamp(1.875rem,5vw,3rem);font-weight:300;color:rgba(255,255,255,0.9);margin-top:1rem;margin-bottom:2rem;line-height:1.2}
+        .about-content h2 span{font-style:italic;color:var(--gold)}
+        .about-text{font-family:'Outfit',sans-serif;color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:1.5rem}
+        .about-text strong{color:rgba(255,255,255,0.9);font-weight:500}
+        .about-text .highlight{color:var(--gold)}
+        .about-quote{font-style:italic;border-left:2px solid rgba(201,169,98,0.5);padding-left:1rem;color:rgba(255,255,255,0.7)}
+        .about-quote-author{display:block;margin-top:0.5rem;font-style:normal;font-size:0.875rem;color:rgba(201,169,98,0.8)}
+        .stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+        .stat-card{padding:1.5rem;text-align:center}
+        .stat-card svg{width:2rem;height:2rem;color:rgba(201,169,98,0.7);margin:0 auto 0.75rem}
+        .stat-value{font-size:1.875rem;font-weight:600}
+        .stat-label{font-family:'Outfit',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:0.5rem}
+        .opportunity-grid{display:grid;gap:1.5rem}
+        @media(min-width:768px){.opportunity-grid{grid-template-columns:repeat(2,1fr);gap:2rem}}
+        .opportunity-card{position:relative;padding:1.5rem;transition:all 0.5s;cursor:pointer}
+        @media(min-width:768px){.opportunity-card{padding:2rem}}
+        .opportunity-card.active{border-color:rgba(201,169,98,0.4);box-shadow:0 0 60px rgba(201,169,98,0.1)}
+        .opportunity-card:hover{border-color:rgba(201,169,98,0.3)}
+        .opportunity-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem}
+        .opportunity-badge{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem}
+        .opportunity-badge svg{width:1rem;height:1rem;color:var(--gold)}
+        .opportunity-badge-text{font-family:'Outfit',sans-serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold)}
+        .opportunity-title{font-size:1.25rem;color:rgba(255,255,255,0.9)}
+        @media(min-width:768px){.opportunity-title{font-size:1.5rem}}
+        .opportunity-roi{width:3.5rem;height:3.5rem;border:1px solid rgba(201,169,98,0.3);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1.1}
+        .opportunity-roi span:first-child{font-size:1.125rem;font-weight:600}
+        .opportunity-roi span:last-child{font-size:0.5rem;text-transform:uppercase;font-family:'Outfit',sans-serif;color:rgba(201,169,98,0.8)}
+        .opportunity-specs{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1.5rem}
+        .opportunity-spec{background:rgba(255,255,255,0.05);padding:1rem}
+        .opportunity-spec-label{font-family:'Outfit',sans-serif;font-size:0.625rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.25rem}
+        .opportunity-spec-value{font-size:1.25rem;color:rgba(255,255,255,0.8)}
+        .opportunity-financials{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem}
+        .opportunity-row{display:flex;justify-content:space-between;margin-bottom:0.75rem}
+        .opportunity-row-label{font-family:'Outfit',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.5)}
+        .opportunity-row-value{font-family:'Outfit',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.8)}
+        .opportunity-profit-row{display:flex;justify-content:space-between;padding-top:0.75rem;border-top:1px solid rgba(201,169,98,0.2);margin-top:0.75rem}
+        .opportunity-profit-label{font-family:'Outfit',sans-serif;font-size:0.875rem;color:var(--gold)}
+        .opportunity-profit-value{font-size:1.125rem;font-weight:600}
     </style>
 </head>
-
+    <style>
+        .proforma-card{overflow:hidden}
+        .proforma-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,0.1)}
+        .proforma-tab{flex:1;padding:1.25rem 1rem;font-family:'Outfit',sans-serif;font-size:0.875rem;letter-spacing:0.05em;background:transparent;border:none;color:rgba(255,255,255,0.5);cursor:pointer;transition:all 0.3s;border-bottom:2px solid transparent}
+        .proforma-tab:hover{color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.05)}
+        .proforma-tab.active{background:rgba(201,169,98,0.1);color:var(--gold);border-bottom-color:var(--gold)}
+        .proforma-tab-title{display:block;font-family:'Cormorant Garamond',serif;font-size:1.125rem;margin-bottom:0.25rem}
+        .proforma-tab-subtitle{font-size:0.75rem;opacity:0.7;display:none}
+        @media(min-width:768px){.proforma-tab-subtitle{display:block}}
+        .proforma-content{padding:1rem;overflow-x:auto;-webkit-overflow-scrolling:touch}
+        @media(min-width:768px){.proforma-content{padding:2rem}}
+        .proforma-table{width:100%;min-width:100%;border-collapse:collapse}
+        .proforma-table th{text-align:left;font-family:'Outfit',sans-serif;font-size:0.75rem;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);padding:1rem 0;border-bottom:1px solid rgba(255,255,255,0.1)}
+        .proforma-table th:not(:first-child){text-align:right}
+        .proforma-table td{padding:1rem 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+        .proforma-table td:not(:first-child){text-align:right}
+        .proforma-table tr:hover{background:rgba(255,255,255,0.02)}
+        .proforma-table .row-label{font-family:'Outfit',sans-serif;color:rgba(255,255,255,0.7)}
+        .proforma-table .row-value{font-size:1.125rem;color:rgba(255,255,255,0.9)}
+        .proforma-table .row-percent{font-family:'Outfit',sans-serif;color:rgba(255,255,255,0.5)}
+        .proforma-table .total-row{background:rgba(255,255,255,0.05)}
+        .proforma-table .total-row td{font-weight:500;color:white}
+        .proforma-table .total-row .row-value{font-size:1.25rem}
+        .proforma-table .profit-row{background:rgba(201,169,98,0.1)}
+        .proforma-table .profit-row td{padding:1.25rem 0;border-bottom:none}
+        .proforma-table .profit-row .row-label{color:var(--gold);font-weight:500}
+        .proforma-table .profit-row .row-value{font-size:1.5rem;font-weight:600}
+        .deal-structure-header{background:rgba(201,169,98,0.05);padding:1rem;margin-bottom:1rem;border-radius:4px;font-family:'Outfit',sans-serif;color:var(--gold);font-size:0.875rem;text-transform:uppercase;letter-spacing:0.1em;text-align:center}
+        .risk-grid{display:grid;gap:1.5rem}
+        @media(min-width:768px){.risk-grid{grid-template-columns:repeat(2,1fr)}}
+        @media(min-width:1024px){.risk-grid{grid-template-columns:repeat(4,1fr)}}
+        .risk-card{padding:1.5rem;height:100%;transition:all 0.3s}
+        @media(min-width:768px){.risk-card{padding:2rem}}
+        .risk-card:hover{border-color:rgba(201,169,98,0.3)}
+        .risk-icon{width:3rem;height:3rem;border:1px solid rgba(201,169,98,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;transition:all 0.3s}
+        .risk-card:hover .risk-icon{border-color:rgba(201,169,98,0.5);background:rgba(201,169,98,0.05)}
+        .risk-icon svg{width:1.25rem;height:1.25rem;color:var(--gold)}
+        .risk-title{font-size:1.25rem;color:rgba(255,255,255,0.9);margin-bottom:1rem}
+        .risk-text{font-family:'Outfit',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.5);line-height:1.6}
+        .timeline{position:relative;max-width:800px;margin:0 auto}
+        .timeline-line{position:absolute;left:1rem;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,rgba(201,169,98,0.5),rgba(201,169,98,0.3),rgba(201,169,98,0.1))}
+        @media(min-width:768px){.timeline-line{left:50%;transform:translateX(-50%)}}
+        .timeline-item{position:relative;display:flex;align-items:center;margin-bottom:3rem}
+        .timeline-item:last-child{margin-bottom:0}
+        @media(min-width:768px){.timeline-item:nth-child(odd){flex-direction:row}.timeline-item:nth-child(even){flex-direction:row-reverse}}
+        .timeline-content{margin-left:3rem;flex:1}
+        @media(min-width:768px){.timeline-content{width:45%;margin-left:0}.timeline-item:nth-child(odd) .timeline-content{text-align:right;padding-right:5rem}.timeline-item:nth-child(even) .timeline-content{text-align:left;padding-left:5rem}}
+        .timeline-phase{font-family:'Outfit',sans-serif;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold)}
+        .timeline-title{font-size:1.5rem;color:rgba(255,255,255,0.9);margin:0.5rem 0 0.75rem}
+        .timeline-text{font-family:'Outfit',sans-serif;font-size:0.875rem;color:rgba(255,255,255,0.5);line-height:1.6}
+        .timeline-dot{position:absolute;left:0;width:2rem;height:2rem;border-radius:50%;background:var(--zinc-950);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px rgba(201,169,98,0.2),0 0 20px rgba(201,169,98,0.3)}
+        @media(min-width:768px){.timeline-dot{left:50%;transform:translateX(-50%);width:3rem;height:3rem}}
+        .timeline-dot svg{width:1rem;height:1rem;color:var(--gold)}
+        @media(min-width:768px){.timeline-dot svg{width:1.25rem;height:1.25rem}}
+        .timeline-duration{display:none}
+        @media(min-width:768px){.timeline-duration{display:block;width:45%}.timeline-item:nth-child(odd) .timeline-duration{padding-left:5rem}.timeline-item:nth-child(even) .timeline-duration{padding-right:5rem;text-align:right}}
+        .timeline-duration-card{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem}
+        .timeline-duration-card svg{width:1rem;height:1rem;color:rgba(201,169,98,0.7)}
+        .timeline-duration-text{font-size:1.125rem;color:rgba(255,255,255,0.8)}
+        .timeline-mobile-duration{display:inline-flex;align-items:center;gap:0.5rem;margin-top:1rem;padding:0.5rem 1rem}
+        @media(min-width:768px){.timeline-mobile-duration{display:none}}
+        .timeline-mobile-duration svg{width:1rem;height:1rem;color:rgba(201,169,98,0.7)}
+        .timeline-mobile-duration span{font-size:0.875rem;color:rgba(255,255,255,0.8)}
+        .faq-list{display:flex;flex-direction:column;gap:1.5rem}
+        .faq-card{padding:1.5rem}
+        @media(min-width:768px){.faq-card{padding:2rem}}
+        .faq-question{display:flex;align-items:flex-start;gap:0.75rem;font-size:1.125rem;color:rgba(255,255,255,0.9);margin-bottom:1rem}
+        @media(min-width:768px){.faq-question{font-size:1.25rem}}
+        .faq-q{font-family:'Outfit',sans-serif;font-size:0.875rem;color:var(--gold);margin-top:0.25rem}
+        .faq-answer{font-family:'Outfit',sans-serif;color:rgba(255,255,255,0.6);line-height:1.8;padding-left:1.75rem}
+        .faq-category{margin-bottom:3rem}
+        .faq-category:last-child{margin-bottom:0}
+        .faq-category-header{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+        .faq-category-icon{width:2.5rem;height:2.5rem;border:1px solid rgba(201,169,98,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .faq-category-icon svg{width:1.25rem;height:1.25rem;color:var(--gold)}
+        .faq-category-title{font-size:1.5rem;font-weight:400;color:rgba(255,255,255,0.9)}
+        .summary-table-container{margin-top:4rem}
+        .summary-table{width:100%;border-collapse:collapse}
+        .summary-table th{text-align:left;font-family:'Outfit',sans-serif;font-size:0.75rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);padding:1rem;border-bottom:1px solid rgba(201,169,98,0.3);background:rgba(201,169,98,0.05)}
+        .summary-table td{padding:1rem;font-family:'Outfit',sans-serif;font-size:0.875rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+        .summary-table td:first-child{color:rgba(255,255,255,0.9);font-weight:500}
+        .summary-table td:last-child{color:rgba(255,255,255,0.6)}
+        .summary-table tr:hover{background:rgba(255,255,255,0.02)}
+        footer{position:relative;padding:3rem 1rem;background:var(--zinc-950);border-top:1px solid rgba(255,255,255,0.05)}
+        @media(min-width:768px){footer{padding:4rem 1.5rem}}
+        .footer-inner{max-width:1152px;margin:0 auto}
+        .footer-top{display:flex;flex-direction:column;align-items:center;gap:2rem}
+        @media(min-width:768px){.footer-top{flex-direction:row;justify-content:space-between}}
+        .footer-brand{display:flex;flex-direction:column;align-items:center;gap:1rem}
+        @media(min-width:768px){.footer-brand{align-items:flex-start}}
+        .footer-brand a{color:white;transition:color 0.3s}
+        .footer-brand a:hover{color:var(--gold)}
+        .footer-links{display:flex;align-items:center;gap:1rem;color:rgba(255,255,255,0.4)}
+        .footer-link{font-family:'Outfit',sans-serif;font-size:0.75rem;color:inherit;text-decoration:none;display:flex;align-items:center;gap:0.25rem;transition:color 0.3s}
+        .footer-link:hover{color:var(--gold)}
+        .footer-link svg{width:0.75rem;height:0.75rem}
+        .footer-legal{font-family:'Outfit',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.3);text-align:center;max-width:28rem}
+        @media(min-width:768px){.footer-legal{text-align:right}}
+        .footer-bottom{margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.05);text-align:center}
+        .footer-copyright{font-family:'Outfit',sans-serif;font-size:0.75rem;color:rgba(255,255,255,0.2)}
+        .text-center{text-align:center}
+    </style>
 <body>
     <nav class="nav">
         <div class="nav-inner">
             <a href="https://www.hickokhomes.com" target="_blank" rel="noopener noreferrer" class="nav-logo">
                 <svg viewBox="0 0 200 65" width="120" height="40" xmlns="http://www.w3.org/2000/svg">
-                    <g fill="currentColor">
-                        <rect x="10" y="15" width="8" height="35" rx="1" />
-                        <rect x="32" y="15" width="8" height="35" rx="1" />
-                        <rect x="10" y="28" width="30" height="7" rx="1" />
-                        <polygon points="25,5 10,18 40,18" fill="none" stroke="currentColor" stroke-width="3"
-                            stroke-linejoin="round" />
-                    </g>
-                    <text x="55" y="38" font-family="Georgia, serif" font-size="22" font-weight="600" letter-spacing="3"
-                        fill="currentColor">HICKOK</text>
-                    <text x="55" y="55" font-family="Arial, sans-serif" font-size="14" font-weight="300"
-                        letter-spacing="6" fill="currentColor" opacity="0.7">HOMES</text>
+                    <g fill="currentColor"><rect x="10" y="15" width="8" height="35" rx="1"/><rect x="32" y="15" width="8" height="35" rx="1"/><rect x="10" y="28" width="30" height="7" rx="1"/><polygon points="25,5 10,18 40,18" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></g>
+                    <text x="55" y="38" font-family="Georgia, serif" font-size="22" font-weight="600" letter-spacing="3" fill="currentColor">HICKOK</text>
+                    <text x="55" y="55" font-family="Arial, sans-serif" font-size="14" font-weight="300" letter-spacing="6" fill="currentColor" opacity="0.7">HOMES</text>
                 </svg>
             </a>
             <div class="nav-links">
-                <a href="https://www.hickokhomes.com/projects" target="_blank" rel="noopener noreferrer"
-                    class="nav-link">
-                    Projects
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                        <polyline points="15 3 21 3 21 9" />
-                        <line x1="10" y1="14" x2="21" y2="3" />
-                    </svg>
-                </a>
-                <a href="https://www.hickokhomes.com/about" target="_blank" rel="noopener noreferrer" class="nav-link">
-                    About
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                        <polyline points="15 3 21 3 21 9" />
-                        <line x1="10" y1="14" x2="21" y2="3" />
-                    </svg>
-                </a>
+                <a href="https://www.hickokhomes.com/projects" target="_blank" rel="noopener noreferrer" class="nav-link">Projects<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+                <a href="https://www.hickokhomes.com/about" target="_blank" rel="noopener noreferrer" class="nav-link">About<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
             </div>
-            <button class="nav-cta"
-                onclick="document.getElementById('register').scrollIntoView({ behavior: 'smooth' })">
-                Investor Access
-            </button>
+            <button class="nav-cta" onclick="document.getElementById('faqSection').scrollIntoView({ behavior: 'smooth' })">Investor FAQ</button>
         </div>
     </nav>
 
     <section class="hero">
         <div class="hero-bg">
-            <div class="hero-image active" id="heroImage1">
-                <img src="6203_E_Joshua_Tree_Ln.webp"
-                    alt="6203 E Joshua Tree Lane - Paradise Valley luxury estate with Camelback Mountain backdrop"
-                    loading="eager">
-            </div>
-            <div class="hero-image" id="heroImage2">
-                <img src="6516_E_Meadowlark_Ln.webp" alt="6516 E Meadowlark Lane - Modern desert architecture at dusk"
-                    loading="lazy">
-            </div>
+            <div class="hero-image active" id="heroImage1"><img src="6203_E_Joshua_Tree_Ln.webp" alt="6203 E Joshua Tree Lane" loading="eager"></div>
+            <div class="hero-image" id="heroImage2"><img src="6516_E_Meadowlark_Ln.webp" alt="6516 E Meadowlark Lane" loading="lazy"></div>
             <div class="hero-overlay"></div>
         </div>
-
         <div class="hero-indicators">
             <button class="hero-indicator active" data-index="0" onclick="setHeroImage(0)"></button>
             <button class="hero-indicator" data-index="1" onclick="setHeroImage(1)"></button>
         </div>
-
         <div class="hero-caption">
             <div class="hero-caption-inner glass-card">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-                    <circle cx="12" cy="12" r="3" />
-                </svg>
-                <span class="font-body" id="heroCaption" style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">6203
-                    E Joshua Tree Lane - $17M Comparable</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                <span class="font-body" id="heroCaption" style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">6203 E Joshua Tree Lane - $17M Comparable</span>
             </div>
         </div>
-
         <div class="hero-content">
             <div class="hero-badge">
                 <div class="hero-badge-line"></div>
                 <span class="hero-badge-text">Paradise Valley, Arizona</span>
                 <div class="hero-badge-line"></div>
             </div>
-
             <h1 class="hero-title">
                 <span class="hero-title-main">The Joshua Tree</span>
                 <span class="hero-title-accent gold-gradient">Estates</span>
             </h1>
-
-            <p class="hero-subtitle font-display">
-                A Rare Spec Development Opportunity in America's Most Coveted Desert Enclave
-            </p>
-
+            <p class="hero-subtitle font-display">A Rare Spec Development Opportunity in America's Most Coveted Desert Enclave</p>
             <div class="hero-presented">
                 <span class="hero-presented-text">Presented by</span>
-                <svg viewBox="0 0 200 65" width="120" height="40" style="color: rgba(201, 169, 98, 0.9);"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <g fill="currentColor">
-                        <rect x="10" y="15" width="8" height="35" rx="1" />
-                        <rect x="32" y="15" width="8" height="35" rx="1" />
-                        <rect x="10" y="28" width="30" height="7" rx="1" />
-                        <polygon points="25,5 10,18 40,18" fill="none" stroke="currentColor" stroke-width="3"
-                            stroke-linejoin="round" />
-                    </g>
-                    <text x="55" y="38" font-family="Georgia, serif" font-size="22" font-weight="600" letter-spacing="3"
-                        fill="currentColor">HICKOK</text>
-                    <text x="55" y="55" font-family="Arial, sans-serif" font-size="14" font-weight="300"
-                        letter-spacing="6" fill="currentColor" opacity="0.7">HOMES</text>
+                <svg viewBox="0 0 200 65" width="120" height="40" style="color: rgba(201, 169, 98, 0.9);" xmlns="http://www.w3.org/2000/svg">
+                    <g fill="currentColor"><rect x="10" y="15" width="8" height="35" rx="1"/><rect x="32" y="15" width="8" height="35" rx="1"/><rect x="10" y="28" width="30" height="7" rx="1"/><polygon points="25,5 10,18 40,18" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></g>
+                    <text x="55" y="38" font-family="Georgia, serif" font-size="22" font-weight="600" letter-spacing="3" fill="currentColor">HICKOK</text>
+                    <text x="55" y="55" font-family="Arial, sans-serif" font-size="14" font-weight="300" letter-spacing="6" fill="currentColor" opacity="0.7">HOMES</text>
                 </svg>
             </div>
-
             <div class="hero-metrics">
-                <div class="hero-metric glass-card">
-                    <div class="hero-metric-value gold-gradient" id="metricProfit">1.84x</div>
-                    <div class="hero-metric-label">Equity Multiple</div>
-                </div>
-                <div class="hero-metric glass-card">
-                    <div class="hero-metric-value gold-gradient" id="metricROI">56%</div>
-                    <div class="hero-metric-label">Annualized Return</div>
-                </div>
-                <div class="hero-metric glass-card">
-                    <div class="hero-metric-value gold-gradient">18</div>
-                    <div class="hero-metric-label">Month Cycle</div>
-                </div>
+                <div class="hero-metric glass-card"><div class="hero-metric-value gold-gradient">1.84x</div><div class="hero-metric-label">Equity Multiple</div></div>
+                <div class="hero-metric glass-card"><div class="hero-metric-value gold-gradient">56%</div><div class="hero-metric-label">Annualized Return</div></div>
+                <div class="hero-metric glass-card"><div class="hero-metric-value gold-gradient">18</div><div class="hero-metric-label">Month Cycle</div></div>
             </div>
-
-            <button class="hero-cta"
-                onclick="document.getElementById('register').scrollIntoView({ behavior: 'smooth' })">
-                <span>Request Investor Access</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                </svg>
+            <button class="hero-cta" onclick="document.getElementById('opportunity').scrollIntoView({ behavior: 'smooth' })">
+                <span>View Investment Details</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 <div class="shimmer"></div>
             </button>
         </div>
-
         <div class="hero-scroll bounce">
             <span class="hero-scroll-text">Explore</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 9 12 15 18 9" />
-            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
     </section>
 
+    <!-- Comparable Sales -->
     <section class="section-dark">
         <div class="section-line"></div>
         <div class="container">
             <div class="section-header">
                 <span class="section-label">Comparable Sales</span>
                 <h2 class="section-title font-display">Market Validation</h2>
-                <p class="section-subtitle">Recent sales in the immediate vicinity demonstrate strong buyer demand for
-                    modern luxury estates.</p>
+                <p class="section-subtitle">Recent sales in the immediate vicinity demonstrate strong buyer demand for modern luxury estates.</p>
             </div>
-
             <div class="property-grid">
                 <div class="property-card">
-                    <div class="property-image">
-                        <img src="6203_E_Joshua_Tree_Ln.webp" alt="6203 E Joshua Tree Lane">
-                    </div>
+                    <div class="property-image"><img src="6203_E_Joshua_Tree_Ln.webp" alt="6203 E Joshua Tree Lane"></div>
                     <div class="property-overlay"></div>
                     <div class="property-info">
-                        <div class="property-badge">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                <circle cx="12" cy="10" r="3" />
-                            </svg>
-                            <span class="property-badge-text">Sold 2024</span>
-                        </div>
+                        <div class="property-badge"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="property-badge-text">Sold 2024</span></div>
                         <h3 class="property-title font-display">6203 E Joshua Tree Lane</h3>
-                        <div class="property-stats">
-                            <span class="property-price gold-gradient font-display">$17.0M</span>
-                            <span class="property-detail">8,847 SF</span>
-                            <span class="property-detail">$1,921/SF</span>
-                        </div>
+                        <div class="property-stats"><span class="property-price gold-gradient font-display">$17.0M</span><span class="property-detail">8,847 SF</span><span class="property-detail">$1,921/SF</span></div>
                     </div>
                     <div class="property-border"></div>
                 </div>
-
                 <div class="property-card">
-                    <div class="property-image">
-                        <img src="6516_E_Meadowlark_Ln.webp" alt="6516 E Meadowlark Lane">
-                    </div>
+                    <div class="property-image"><img src="6516_E_Meadowlark_Ln.webp" alt="6516 E Meadowlark Lane"></div>
                     <div class="property-overlay"></div>
                     <div class="property-info">
-                        <div class="property-badge">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                <circle cx="12" cy="10" r="3" />
-                            </svg>
-                            <span class="property-badge-text">Sold 2024</span>
-                        </div>
+                        <div class="property-badge"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="property-badge-text">Sold 2024</span></div>
                         <h3 class="property-title font-display">6516 E Meadowlark Lane</h3>
-                        <div class="property-stats">
-                            <span class="property-price gold-gradient font-display">$14.27M</span>
-                            <span class="property-detail">7,892 SF</span>
-                            <span class="property-detail">$1,808/SF</span>
-                        </div>
+                        <div class="property-stats"><span class="property-price gold-gradient font-display">$14.27M</span><span class="property-detail">7,892 SF</span><span class="property-detail">$1,808/SF</span></div>
                     </div>
                     <div class="property-border"></div>
                 </div>
             </div>
-
-            <p class="text-center font-body"
-                style="font-size: 0.875rem; color: rgba(255,255,255,0.4); margin-top: 2rem;">
-                These recent comparable sales validate our exit pricing strategy for The Joshua Tree Estates.
-            </p>
+            <p class="text-center font-body" style="font-size: 0.875rem; color: rgba(255,255,255,0.4); margin-top: 2rem;">These recent comparable sales validate our exit pricing strategy for The Joshua Tree Estates.</p>
         </div>
     </section>
 
+    <!-- Developer Section -->
     <section class="section-darker">
         <div class="section-line"></div>
         <div class="container">
             <div class="about-grid">
                 <div class="about-content">
                     <span class="section-label">The Developer</span>
-                    <h2 class="font-display">
-                        120 Years of<br>
-                        <span>Building Excellence</span>
-                    </h2>
-                    <p class="about-text">
-                        <strong>Hickok Homes</strong> is a branch of the historic Hickok-Dible Companies,
-                        Kansas City's oldest existing real estate development company, founded in 1904 by Napoleon W.
-                        Dible.
-                    </p>
-                    <p class="about-text">
-                        Under the leadership of <span class="highlight">James Hickok</span>, a fifth-generation family
-                        member,
-                        Hickok Homes continues a century-long tradition of innovation—from the iconic "Dible Tudor"
-                        homes lining
-                        Ward Parkway to today's modern luxury residences.
-                    </p>
-                    <p class="about-quote about-text">
-                        "You are nothing without your name. I feel like I have a big responsibility to carry on the
-                        vision
-                        that my great-great-grandfather had."
-                        <span class="about-quote-author">— James Hickok, President</span>
-                    </p>
+                    <h2 class="font-display">120 Years of<br><span>Building Excellence</span></h2>
+                    <p class="about-text"><strong>Hickok Homes</strong> is a branch of the historic Hickok-Dible Companies, Kansas City's oldest existing real estate development company, founded in 1904 by Napoleon W. Dible.</p>
+                    <p class="about-text">Under the leadership of <span class="highlight">James Hickok</span>, a fifth-generation family member, Hickok Homes continues a century-long tradition of innovation—from the iconic "Dible Tudor" homes lining Ward Parkway to today's modern luxury residences.</p>
+                    <p class="about-quote about-text">"You are nothing without your name. I feel like I have a big responsibility to carry on the vision that my great-great-grandfather had."<span class="about-quote-author">— James Hickok, President</span></p>
                 </div>
-
                 <div class="stats-grid">
-                    <div class="stat-card glass-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                            <line x1="16" y1="2" x2="16" y2="6" />
-                            <line x1="8" y1="2" x2="8" y2="6" />
-                            <line x1="3" y1="10" x2="21" y2="10" />
-                        </svg>
-                        <div class="stat-value gold-gradient font-display">1904</div>
-                        <div class="stat-label">Founded</div>
-                    </div>
-                    <div class="stat-card glass-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
-                            <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
-                            <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
-                            <path d="M10 6h4" />
-                            <path d="M10 10h4" />
-                            <path d="M10 14h4" />
-                            <path d="M10 18h4" />
-                        </svg>
-                        <div class="stat-value gold-gradient font-display">7,000+</div>
-                        <div class="stat-label">Living Units Built</div>
-                    </div>
-                    <div class="stat-card glass-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                            <circle cx="9" cy="7" r="4" />
-                            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                        </svg>
-                        <div class="stat-value gold-gradient font-display">5</div>
-                        <div class="stat-label">Generations</div>
-                    </div>
-                    <div class="stat-card glass-card">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="8" r="7" />
-                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-                        </svg>
-                        <div class="stat-value gold-gradient font-display">#1</div>
-                        <div class="stat-label">Voted Best Developer</div>
-                    </div>
+                    <div class="stat-card glass-card"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><div class="stat-value gold-gradient font-display">1904</div><div class="stat-label">Founded</div></div>
+                    <div class="stat-card glass-card"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg><div class="stat-value gold-gradient font-display">7,000+</div><div class="stat-label">Living Units Built</div></div>
+                    <div class="stat-card glass-card"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><div class="stat-value gold-gradient font-display">5</div><div class="stat-label">Generations</div></div>
+                    <div class="stat-card glass-card"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg><div class="stat-value gold-gradient font-display">#1</div><div class="stat-label">Voted Best Developer</div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section-dark">
+    <!-- Opportunity Section -->
+    <section class="section-dark" id="opportunity">
         <div class="section-line"></div>
         <div class="container">
             <div class="section-header">
                 <span class="section-label">The Opportunity</span>
                 <h2 class="section-title font-display">Two Adjacent Masterworks</h2>
-                <p class="section-subtitle">
-                    Adjacent parcels on E Joshua Tree Lane offer a rare opportunity for scaled luxury development
-                    with projected combined returns exceeding $14.8 million.
-                </p>
+                <p class="section-subtitle">Adjacent parcels on E Joshua Tree Lane offer a rare opportunity for scaled luxury development with projected combined returns exceeding $14.8 million.</p>
             </div>
-
             <div class="opportunity-grid">
-                <div class="opportunity-card glass-card active" data-lot="6418">
+                <div class="opportunity-card glass-card active">
                     <div class="opportunity-header">
                         <div>
-                            <div class="opportunity-badge">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                    <circle cx="12" cy="10" r="3" />
-                                </svg>
-                                <span class="opportunity-badge-text">Lot 6418</span>
-                            </div>
+                            <div class="opportunity-badge"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="opportunity-badge-text">Lot 6418</span></div>
                             <h3 class="opportunity-title font-display">6418 E Joshua Tree Lane</h3>
                         </div>
-                        <div class="opportunity-roi glass-card">
-                            <span class="gold-gradient font-display">1.83x</span>
-                            <span>Equity Mult.</span>
-                        </div>
+                        <div class="opportunity-roi glass-card"><span class="gold-gradient font-display">1.83x</span><span>Equity Mult.</span></div>
                     </div>
-
                     <div class="opportunity-specs">
-                        <div class="opportunity-spec">
-                            <div class="opportunity-spec-label">Est. Size</div>
-                            <div class="opportunity-spec-value font-display">9,200+ SF</div>
-                        </div>
-                        <div class="opportunity-spec">
-                            <div class="opportunity-spec-label">Lot Size</div>
-                            <div class="opportunity-spec-value font-display">1.1 acres</div>
-                        </div>
+                        <div class="opportunity-spec"><div class="opportunity-spec-label">Est. Size</div><div class="opportunity-spec-value font-display">9,200+ SF</div></div>
+                        <div class="opportunity-spec"><div class="opportunity-spec-label">Lot Size</div><div class="opportunity-spec-value font-display">1.1 acres</div></div>
                     </div>
-
-                    <div class="opportunity-financials" id="financials6418">
-                        <div class="opportunity-row">
-                            <span class="opportunity-row-label">Acquisition</span>
-                            <span class="opportunity-row-value">$3.90M</span>
-                        </div>
-                        <div class="opportunity-row">
-                            <span class="opportunity-row-label">All-In Cost</span>
-                            <span class="opportunity-row-value">$9.02M</span>
-                        </div>
-                        <div class="opportunity-row">
-                            <span class="opportunity-row-label">Exit Price</span>
-                            <span class="opportunity-row-value">$16.50M</span>
-                        </div>
-                        <div class="opportunity-profit-row">
-                            <span class="opportunity-profit-label">Net Profit</span>
-                            <span class="opportunity-profit-value gold-gradient font-display">$7.48M</span>
-                        </div>
-                    </div>
-
-                    <div class="opportunity-locked" id="locked6418">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                        </svg>
-                        <span class="opportunity-locked-text">Register to view financials</span>
+                    <div class="opportunity-financials">
+                        <div class="opportunity-row"><span class="opportunity-row-label">Acquisition</span><span class="opportunity-row-value">$3.90M</span></div>
+                        <div class="opportunity-row"><span class="opportunity-row-label">All-In Cost</span><span class="opportunity-row-value">$9.02M</span></div>
+                        <div class="opportunity-row"><span class="opportunity-row-label">Exit Price</span><span class="opportunity-row-value">$16.50M</span></div>
+                        <div class="opportunity-profit-row"><span class="opportunity-profit-label">Net Profit</span><span class="opportunity-profit-value gold-gradient font-display">$7.48M</span></div>
                     </div>
                 </div>
-
-                <div class="opportunity-card glass-card" data-lot="5840">
+                <div class="opportunity-card glass-card">
                     <div class="opportunity-header">
                         <div>
-                            <div class="opportunity-badge">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                    <circle cx="12" cy="10" r="3" />
-                                </svg>
-                                <span class="opportunity-badge-text">Lot 5840</span>
-                            </div>
+                            <div class="opportunity-badge"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span class="opportunity-badge-text">Lot 5840</span></div>
                             <h3 class="opportunity-title font-display">5840 E Joshua Tree Lane</h3>
                         </div>
-                        <div class="opportunity-roi glass-card">
-                            <span class="gold-gradient font-display">1.86x</span>
-                            <span>Equity Mult.</span>
-                        </div>
+                        <div class="opportunity-roi glass-card"><span class="gold-gradient font-display">1.86x</span><span>Equity Mult.</span></div>
                     </div>
-
                     <div class="opportunity-specs">
-                        <div class="opportunity-spec">
-                            <div class="opportunity-spec-label">Est. Size</div>
-                            <div class="opportunity-spec-value font-display">9,400+ SF</div>
-                        </div>
-                        <div class="opportunity-spec">
-                            <div class="opportunity-spec-label">Lot Size</div>
-                            <div class="opportunity-spec-value font-display">1.05 acres</div>
-                        </div>
+                        <div class="opportunity-spec"><div class="opportunity-spec-label">Est. Size</div><div class="opportunity-spec-value font-display">9,400+ SF</div></div>
+                        <div class="opportunity-spec"><div class="opportunity-spec-label">Lot Size</div><div class="opportunity-spec-value font-display">1.05 acres</div></div>
                     </div>
-
-                    <div class="opportunity-financials" id="financials5840">
-                        <div class="opportunity-row">
-                            <span class="opportunity-row-label">Acquisition</span>
-                            <span class="opportunity-row-value">$3.50M</span>
-                        </div>
-                        <div class="opportunity-row">
-                            <span class="opportunity-row-label">All-In Cost</span>
-                            <span class="opportunity-row-value">$8.60M</span>
-                        </div>
-                        <div class="opportunity-row">
-                            <span class="opportunity-row-label">Exit Price</span>
-                            <span class="opportunity-row-value">$16.00M</span>
-                        </div>
-                        <div class="opportunity-profit-row">
-                            <span class="opportunity-profit-label">Net Profit</span>
-                            <span class="opportunity-profit-value gold-gradient font-display">$7.40M</span>
-                        </div>
-                    </div>
-
-                    <div class="opportunity-locked" id="locked5840">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                        </svg>
-                        <span class="opportunity-locked-text">Register to view financials</span>
+                    <div class="opportunity-financials">
+                        <div class="opportunity-row"><span class="opportunity-row-label">Acquisition</span><span class="opportunity-row-value">$3.50M</span></div>
+                        <div class="opportunity-row"><span class="opportunity-row-label">All-In Cost</span><span class="opportunity-row-value">$8.60M</span></div>
+                        <div class="opportunity-row"><span class="opportunity-row-label">Exit Price</span><span class="opportunity-row-value">$16.00M</span></div>
+                        <div class="opportunity-profit-row"><span class="opportunity-profit-label">Net Profit</span><span class="opportunity-profit-value gold-gradient font-display">$7.40M</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section-darker" id="register">
-        <div class="section-line"></div>
-        <div class="container">
-            <div class="register-icon">
-                <svg id="registerIconLock" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                </svg>
-                <svg id="registerIconCheck" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-            </div>
-
-            <div class="section-header">
-                <h2 class="section-title font-display" id="registerTitle">Accredited Investor Access</h2>
-                <p class="section-subtitle" id="registerSubtitle">Complete your registration to access detailed
-                    financial projections.</p>
-            </div>
-
-            <div class="register-form" id="registerForm">
-                <div class="form-error hidden" id="formError"></div>
-
-                <div class="form-group">
-                    <label class="form-label" for="nameInput">Full Name</label>
-                    <input type="text" id="nameInput" class="form-input" placeholder="Enter your full name">
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="emailInput">Email Address</label>
-                    <input type="email" id="emailInput" class="form-input" placeholder="investor@example.com">
-                </div>
-
-                <div class="form-checkbox" onclick="toggleCheckbox()">
-                    <button type="button" class="checkbox-button" id="checkboxButton">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="20 6 9 17 4 12" />
-                        </svg>
-                    </button>
-                    <span class="checkbox-label">
-                        I confirm that I am an <span class="highlight">Accredited Investor</span>
-                        (Net worth exceeding $1M excluding primary residence, or annual income exceeding $200,000).
-                    </span>
-                </div>
-
-                <button class="form-submit" onclick="submitForm()">
-                    <span>Verify & Access Portfolio</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                        <polyline points="12 5 19 12 12 19" />
-                    </svg>
-                    <div class="shimmer"></div>
-                </button>
-
-                <p class="form-status">
-                    Form status: Name (<span id="statusName">○</span>) | Email (<span id="statusEmail">○</span>) |
-                    Confirmed (<span id="statusConfirmed">○</span>)
-                </p>
-            </div>
-
-            <div class="register-success glass-card hidden" id="registerSuccess">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                    <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-                <p class="register-success-title font-display">Registration Complete</p>
-                <p class="register-success-text">Scroll down to explore full financial details</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-dark hidden" id="proformaSection">
+    <!-- Pro Forma Section -->
+    <section class="section-darker" id="proformaSection">
         <div class="section-line"></div>
         <div class="container">
             <div class="section-header">
                 <span class="section-label">Pro Forma & Deal Structure</span>
                 <h2 class="section-title font-display">Financial Analysis</h2>
             </div>
-
             <div class="proforma-card glass-card">
                 <div class="proforma-tabs">
-                    <button class="proforma-tab active" data-tab="6418" onclick="setProformaTab('6418')">
-                        <span class="proforma-tab-title">Lot 6418</span>
-                        <span class="proforma-tab-subtitle">6418 E Joshua Tree Lane</span>
-                    </button>
-                    <button class="proforma-tab" data-tab="5840" onclick="setProformaTab('5840')">
-                        <span class="proforma-tab-title">Lot 5840</span>
-                        <span class="proforma-tab-subtitle">5840 E Joshua Tree Lane</span>
-                    </button>
-                    <button class="proforma-tab" data-tab="structure" onclick="setProformaTab('structure')">
-                        <span class="proforma-tab-title">Deal Structure</span>
-                        <span class="proforma-tab-subtitle">GP/LP Split Waterfall</span>
-                    </button>
+                    <button class="proforma-tab active" data-tab="6418" onclick="setProformaTab('6418')"><span class="proforma-tab-title">Lot 6418</span><span class="proforma-tab-subtitle">6418 E Joshua Tree Lane</span></button>
+                    <button class="proforma-tab" data-tab="5840" onclick="setProformaTab('5840')"><span class="proforma-tab-title">Lot 5840</span><span class="proforma-tab-subtitle">5840 E Joshua Tree Lane</span></button>
+                    <button class="proforma-tab" data-tab="structure" onclick="setProformaTab('structure')"><span class="proforma-tab-title">Deal Structure</span><span class="proforma-tab-subtitle">GP/LP Split Waterfall</span></button>
                 </div>
-
-                <div class="proforma-content">
-                    <table class="proforma-table">
-                        <tbody id="proformaBody">
-                        </tbody>
-                    </table>
-                </div>
+                <div class="proforma-content"><table class="proforma-table"><tbody id="proformaBody"></tbody></table></div>
             </div>
         </div>
     </section>
 
-    <section class="section-darker hidden" id="riskSection">
+    <!-- Risk Mitigation Section -->
+    <section class="section-dark" id="riskSection">
         <div class="section-line"></div>
         <div class="container">
             <div class="section-header">
                 <span class="section-label">Investor Protection</span>
                 <h2 class="section-title font-display">Risk Mitigation Framework</h2>
             </div>
-
             <div class="risk-grid">
                 <div class="risk-card glass-card">
-                    <div class="risk-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        </svg>
-                    </div>
+                    <div class="risk-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
                     <h3 class="risk-title font-display">Market Cycle Insulation</h3>
-                    <p class="risk-text">Paradise Valley's ultra-luxury segment demonstrates remarkable resilience to
-                        broader market fluctuations.</p>
+                    <p class="risk-text">Paradise Valley's ultra-luxury segment demonstrates remarkable resilience to broader market fluctuations.</p>
                 </div>
-
                 <div class="risk-card glass-card">
-                    <div class="risk-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="12" y1="1" x2="12" y2="23" />
-                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                        </svg>
-                    </div>
+                    <div class="risk-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
                     <h3 class="risk-title font-display">Financial Guardrails</h3>
-                    <p class="risk-text">Conservative 65% LTV structures with built-in contingencies ensure capital
-                        preservation.</p>
+                    <p class="risk-text">Conservative 65% LTV structures with built-in contingencies ensure capital preservation.</p>
                 </div>
-
                 <div class="risk-card glass-card">
-                    <div class="risk-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10" />
-                            <circle cx="12" cy="12" r="6" />
-                            <circle cx="12" cy="12" r="2" />
-                        </svg>
-                    </div>
+                    <div class="risk-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
                     <h3 class="risk-title font-display">Operational Security</h3>
                     <p class="risk-text">120+ years of Hickok-Dible development expertise minimizing execution risk.</p>
                 </div>
-
                 <div class="risk-card glass-card">
-                    <div class="risk-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2" />
-                            <polyline points="2 17 12 22 22 17" />
-                            <polyline points="2 12 12 17 22 12" />
-                        </svg>
-                    </div>
+                    <div class="risk-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
                     <h3 class="risk-title font-display">Design Continuity</h3>
                     <p class="risk-text">The renowned 'Hickok Homes Touch' aligned with $15M+ buyer preferences.</p>
                 </div>
@@ -2335,196 +470,147 @@
         </div>
     </section>
 
-    <section class="section-dark hidden" id="timelineSection">
+    <!-- Timeline Section -->
+    <section class="section-darker" id="timelineSection">
         <div class="section-line"></div>
         <div class="container">
             <div class="section-header">
                 <span class="section-label">Execution</span>
                 <h2 class="section-title font-display">18-Month Capital Velocity</h2>
             </div>
-
             <div class="timeline">
                 <div class="timeline-line"></div>
-
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <span class="timeline-phase">Phase 1</span>
                         <h3 class="timeline-title font-display">Land Acquisition</h3>
-                        <p class="timeline-text">Secure both parcels with strategic financing structure. Due diligence
-                            and title clearing.</p>
-                        <div class="timeline-mobile-duration glass-card">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10" />
-                                <polyline points="12 6 12 12 16 14" />
-                            </svg>
-                            <span>Month 1</span>
-                        </div>
+                        <p class="timeline-text">Secure both parcels with strategic financing structure. Due diligence and title clearing.</p>
+                        <div class="timeline-mobile-duration glass-card"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Month 1</span></div>
                     </div>
-                    <div class="timeline-dot">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="3" y1="21" x2="21" y2="21" />
-                            <line x1="6" y1="21" x2="6" y2="10" />
-                            <line x1="18" y1="21" x2="18" y2="10" />
-                            <path d="M6 6a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v4H6z" />
-                        </svg>
-                    </div>
-                    <div class="timeline-duration">
-                        <div class="timeline-duration-card glass-card">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10" />
-                                <polyline points="12 6 12 12 16 14" />
-                            </svg>
-                            <span class="timeline-duration-text font-display">Month 1</span>
-                        </div>
-                    </div>
+                    <div class="timeline-dot"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="21" x2="21" y2="21"/><line x1="6" y1="21" x2="6" y2="10"/><line x1="18" y1="21" x2="18" y2="10"/><path d="M6 6a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v4H6z"/></svg></div>
+                    <div class="timeline-duration"><div class="timeline-duration-card glass-card"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="timeline-duration-text font-display">Month 1</span></div></div>
                 </div>
-
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <span class="timeline-phase">Phase 2</span>
                         <h3 class="timeline-title font-display">Vertical Construction</h3>
-                        <p class="timeline-text">Full architectural development, permitting, and construction. Interior
-                            curation and landscape design executed in parallel.</p>
-                        <div class="timeline-mobile-duration glass-card">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10" />
-                                <polyline points="12 6 12 12 16 14" />
-                            </svg>
-                            <span>Months 2–15</span>
-                        </div>
+                        <p class="timeline-text">Full architectural development, permitting, and construction. Interior curation and landscape design executed in parallel.</p>
+                        <div class="timeline-mobile-duration glass-card"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Months 2–15</span></div>
                     </div>
-                    <div class="timeline-dot">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
-                            <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2" />
-                            <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2" />
-                            <path d="M10 6h4" />
-                            <path d="M10 10h4" />
-                            <path d="M10 14h4" />
-                            <path d="M10 18h4" />
-                        </svg>
-                    </div>
-                    <div class="timeline-duration">
-                        <div class="timeline-duration-card glass-card">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10" />
-                                <polyline points="12 6 12 12 16 14" />
-                            </svg>
-                            <span class="timeline-duration-text font-display">Months 2–15</span>
-                        </div>
-                    </div>
+                    <div class="timeline-dot"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg></div>
+                    <div class="timeline-duration"><div class="timeline-duration-card glass-card"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="timeline-duration-text font-display">Months 2–15</span></div></div>
                 </div>
-
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <span class="timeline-phase">Phase 3</span>
                         <h3 class="timeline-title font-display">Marketing & Disposition</h3>
-                        <p class="timeline-text">Strategic pre-marketing to qualified buyers. Professional staging and
-                            luxury brokerage engagement.</p>
-                        <div class="timeline-mobile-duration glass-card">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10" />
-                                <polyline points="12 6 12 12 16 14" />
-                            </svg>
-                            <span>Months 16–18</span>
-                        </div>
+                        <p class="timeline-text">Strategic pre-marketing to qualified buyers. Professional staging and luxury brokerage engagement.</p>
+                        <div class="timeline-mobile-duration glass-card"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Months 16–18</span></div>
                     </div>
-                    <div class="timeline-dot">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                            <polyline points="17 6 23 6 23 12" />
-                        </svg>
-                    </div>
-                    <div class="timeline-duration">
-                        <div class="timeline-duration-card glass-card">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10" />
-                                <polyline points="12 6 12 12 16 14" />
-                            </svg>
-                            <span class="timeline-duration-text font-display">Months 16–18</span>
-                        </div>
-                    </div>
+                    <div class="timeline-dot"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+                    <div class="timeline-duration"><div class="timeline-duration-card glass-card"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span class="timeline-duration-text font-display">Months 16–18</span></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section-darker hidden" id="faqSection">
+    <!-- FAQ Section -->
+    <section class="section-dark" id="faqSection">
         <div class="section-line"></div>
-        <div class="container" style="max-width: 896px;">
+        <div class="container" style="max-width: 960px;">
             <div class="section-header">
                 <span class="section-label">Due Diligence</span>
                 <h2 class="section-title font-display">Investor FAQ</h2>
+                <p class="section-subtitle">Comprehensive answers to critical investment questions for The Joshua Tree Estates.</p>
             </div>
 
-            <div class="faq-list">
-                <div class="faq-card glass-card">
-                    <h3 class="faq-question font-display">
-                        <span class="faq-q">Q.</span>
-                        Why is the 18-month cycle important?
-                    </h3>
-                    <p class="faq-answer">
-                        Capital velocity is our primary risk mitigation tool. While traditional funds lock capital for
-                        5-7 years,
-                        our 18-month "Short-Duration" strategy allows investors to realize an ~1.8x Equity Multiple and
-                        recycle capital
-                        quickly, minimizing exposure to long-term market cycles.
-                    </p>
+            <div class="faq-category">
+                <div class="faq-category-header">
+                    <div class="faq-category-icon glass-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                    <h3 class="faq-category-title font-display">Market & Location</h3>
                 </div>
-
-                <div class="faq-card glass-card">
-                    <h3 class="faq-question font-display">
-                        <span class="faq-q">Q.</span>
-                        How do you justify the aggressive exit pricing?
-                    </h3>
-                    <p class="faq-answer">
-                        Exit pricing is supported by recent comparable sales on E Joshua Tree Lane ($17.0M) and E
-                        Meadowlark Lane ($14.27M).
-                        Our 9,000+ SF designs with modern-industrial architecture are positioned competitively within
-                        demonstrated market parameters.
-                    </p>
+                <div class="faq-list">
+                    <div class="faq-card glass-card">
+                        <h3 class="faq-question font-display"><span class="faq-q">Q.</span>Why Paradise Valley (85253) in 2026?</h3>
+                        <p class="faq-answer">Paradise Valley remains Arizona's premier market due to its no municipal property tax policy and low-density zoning (one-acre minimums). In 2026, the entry point for "fixer-upper" homes has risen to $2M-$5M, with new estates regularly clearing $2,000 per sq. ft. for prime views.</p>
+                    </div>
+                    <div class="faq-card glass-card">
+                        <h3 class="faq-question font-display"><span class="faq-q">Q.</span>What is the "migration hedge"?</h3>
+                        <p class="faq-answer">Luxury demand is bolstered by steady migration from high-tax states like California and Texas. A 2026 ballot initiative in California targeting billionaires is expected to further drive ultra-high-net-worth (UHNW) buyers to the lower tax structures of Paradise Valley.</p>
+                    </div>
                 </div>
+            </div>
 
-                <div class="faq-card glass-card">
-                    <h3 class="faq-question font-display">
-                        <span class="faq-q">Q.</span>
-                        What is the proposed deal structure?
-                    </h3>
-                    <p class="faq-answer">
-                        We propose a 7% Preferred Return to investors, followed by an 80/20 split until a 20% IRR hurdle
-                        is met.
-                        Above that hurdle, profits are split 50/50, aligning incentives to maximize the total portfolio
-                        value.
-                    </p>
+            <div class="faq-category">
+                <div class="faq-category-header">
+                    <div class="faq-category-icon glass-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/></svg></div>
+                    <h3 class="faq-category-title font-display">Development & Design</h3>
                 </div>
+                <div class="faq-list">
+                    <div class="faq-card glass-card">
+                        <h3 class="faq-question font-display"><span class="faq-q">Q.</span>What is the expected construction timeline?</h3>
+                        <p class="faq-answer">While a typical high-end build takes 18 to 30 months, our 18-month pro forma is achievable by utilizing flat interior lots, which avoid the lengthy Hillside Review processes and public meetings required for mountain-slope builds.</p>
+                    </div>
+                    <div class="faq-card glass-card">
+                        <h3 class="faq-question font-display"><span class="faq-q">Q.</span>How does the design meet 2026 buyer preferences?</h3>
+                        <p class="faq-answer">The "Warm Modern" and Desert Contemporary styles - characterized by low horizontal rooflines, floor-to-ceiling glass, and natural stone - are the most rewarded aesthetics in this market. We are integrating wellness facilities (cold plunges/saunas) and EV-ready six-car garages, which are now baseline requirements for the $15M+ price bracket.</p>
+                    </div>
+                </div>
+            </div>
 
-                <div class="faq-card glass-card">
-                    <h3 class="faq-question font-display">
-                        <span class="faq-q">Q.</span>
-                        Why Hickok Homes for a Paradise Valley project?
-                    </h3>
-                    <p class="faq-answer">
-                        With 120+ years of development experience and over 7,000 living units built, Hickok Homes brings
-                        unmatched expertise
-                        in luxury residential construction. James Hickok's commitment to bespoke design and the family's
-                        reputation for quality
-                        craftsmanship ensures each project exceeds expectations.
-                    </p>
+            <div class="faq-category">
+                <div class="faq-category-header">
+                    <div class="faq-category-icon glass-card"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+                    <h3 class="faq-category-title font-display">Financials & Tax Strategy</h3>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-card glass-card">
+                        <h3 class="faq-question font-display"><span class="faq-q">Q.</span>How are construction cost overruns managed?</h3>
+                        <p class="faq-answer">Custom builds in 2026 range from $650 to over $1,000 per sq. ft. Our $3.5M per unit hard cost budget includes a dedicated contingency fund and relies on fixed-price contracts with vetted local trades to mitigate supply chain volatility.</p>
+                    </div>
+                    <div class="faq-card glass-card">
+                        <h3 class="faq-question font-display"><span class="faq-q">Q.</span>Are there unique tax advantages for investors?</h3>
+                        <p class="faq-answer">The "One Big Beautiful Bill" (OBBBA) of 2025 permanently restored 100% bonus depreciation for qualifying property. Investors may be able to deduct a significant portion of their basis in year one through a cost segregation study, potentially creating massive immediate tax savings against other passive income.</p>
+                    </div>
+                    <div class="faq-card glass-card">
+                        <h3 class="faq-question font-display"><span class="faq-q">Q.</span>What happens if the home does not sell in 18 months?</h3>
+                        <p class="faq-answer">Paradise Valley has an active luxury rental market, with estates commanding over $40,000 per month. Our 2.3% exit cap rate is conservative; we can refinance the construction loan into a bridge loan to return investor capital while holding the asset for a premium sale.</p>
+                    </div>
+                    <div class="faq-card glass-card">
+                        <h3 class="faq-question font-display"><span class="faq-q">Q.</span>Why is the 18-month cycle important?</h3>
+                        <p class="faq-answer">Capital velocity is our primary risk mitigation tool. While traditional funds lock capital for 5-7 years, our 18-month "Short-Duration" strategy allows investors to realize an ~1.8x Equity Multiple and recycle capital quickly, minimizing exposure to long-term market cycles.</p>
+                    </div>
+                    <div class="faq-card glass-card">
+                        <h3 class="faq-question font-display"><span class="faq-q">Q.</span>How do you justify the aggressive exit pricing?</h3>
+                        <p class="faq-answer">Exit pricing is supported by recent comparable sales on E Joshua Tree Lane ($17.0M) and E Meadowlark Lane ($14.27M). Our 9,000+ SF designs with modern-industrial architecture are positioned competitively within demonstrated market parameters.</p>
+                    </div>
+                    <div class="faq-card glass-card">
+                        <h3 class="faq-question font-display"><span class="faq-q">Q.</span>What is the proposed deal structure?</h3>
+                        <p class="faq-answer">We propose a 7% Preferred Return to investors, followed by an 80/20 split until a 20% IRR hurdle is met. Above that hurdle, profits are split 50/50, aligning incentives to maximize the total portfolio value.</p>
+                    </div>
+                    <div class="faq-card glass-card">
+                        <h3 class="faq-question font-display"><span class="faq-q">Q.</span>Why Hickok Homes for a Paradise Valley project?</h3>
+                        <p class="faq-answer">With 120+ years of development experience and over 7,000 living units built, Hickok Homes brings unmatched expertise in luxury residential construction. James Hickok's commitment to bespoke design and the family's reputation for quality craftsmanship ensures each project exceeds expectations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strategic Summary Table -->
+            <div class="summary-table-container">
+                <div class="section-header" style="margin-bottom: 2rem;">
+                    <span class="section-label">Strategic Overview</span>
+                    <h3 class="section-title font-display" style="font-size: 1.75rem;">Investment Positioning Summary</h3>
+                </div>
+                <div class="glass-card" style="overflow: hidden; border-radius: 0.5rem;">
+                    <table class="summary-table">
+                        <thead><tr><th>Factor</th><th>Strategic Positioning</th></tr></thead>
+                        <tbody>
+                            <tr><td>Price Point</td><td>Supported by the $32.4M record recently set in Paradise Valley</td></tr>
+                            <tr><td>Liquidity</td><td>High volume of cash buyers (50%+) reduces appraisal and financing risk</td></tr>
+                            <tr><td>Tax Hedge</td><td>Permanent 100% bonus depreciation and increased estate tax exemptions ($15M/person)</td></tr>
+                            <tr><td>Zoning</td><td>One-acre minimums protect against oversupply in the immediate corridor</td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -2536,217 +622,65 @@
                 <div class="footer-brand">
                     <a href="https://www.hickokhomes.com" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 200 65" width="160" height="50" xmlns="http://www.w3.org/2000/svg">
-                            <g fill="currentColor">
-                                <rect x="10" y="15" width="8" height="35" rx="1" />
-                                <rect x="32" y="15" width="8" height="35" rx="1" />
-                                <rect x="10" y="28" width="30" height="7" rx="1" />
-                                <polygon points="25,5 10,18 40,18" fill="none" stroke="currentColor" stroke-width="3"
-                                    stroke-linejoin="round" />
-                            </g>
-                            <text x="55" y="38" font-family="Georgia, serif" font-size="22" font-weight="600"
-                                letter-spacing="3" fill="currentColor">HICKOK</text>
-                            <text x="55" y="55" font-family="Arial, sans-serif" font-size="14" font-weight="300"
-                                letter-spacing="6" fill="currentColor" opacity="0.7">HOMES</text>
+                            <g fill="currentColor"><rect x="10" y="15" width="8" height="35" rx="1"/><rect x="32" y="15" width="8" height="35" rx="1"/><rect x="10" y="28" width="30" height="7" rx="1"/><polygon points="25,5 10,18 40,18" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></g>
+                            <text x="55" y="38" font-family="Georgia, serif" font-size="22" font-weight="600" letter-spacing="3" fill="currentColor">HICKOK</text>
+                            <text x="55" y="55" font-family="Arial, sans-serif" font-size="14" font-weight="300" letter-spacing="6" fill="currentColor" opacity="0.7">HOMES</text>
                         </svg>
                     </a>
                     <div class="footer-links">
-                        <a href="https://www.hickokhomes.com" target="_blank" rel="noopener noreferrer"
-                            class="footer-link">
-                            hickokhomes.com <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                <polyline points="15 3 21 3 21 9" />
-                                <line x1="10" y1="14" x2="21" y2="3" />
-                            </svg>
-                        </a>
+                        <a href="https://www.hickokhomes.com" target="_blank" rel="noopener noreferrer" class="footer-link">hickokhomes.com<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
                         <span>|</span>
                         <span style="font-family: 'Outfit', sans-serif; font-size: 0.75rem;">Est. 1904</span>
                     </div>
                 </div>
-
                 <div class="footer-legal">
-                    <p>This material is for informational purposes only and does not constitute an offer to sell
-                        securities.</p>
-                    <p style="margin-top: 0.25rem;">Investment involves risk. Past performance does not guarantee future
-                        results.</p>
+                    <p>This material is for informational purposes only and does not constitute an offer to sell securities.</p>
+                    <p style="margin-top: 0.25rem;">Investment involves risk. Past performance does not guarantee future results.</p>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <p class="footer-copyright">
-                    © 2025 Hickok Homes. A division of Hickok-Dible Companies. Kansas City's oldest real estate
-                    developer since 1904.
-                </p>
+                <p class="footer-copyright">2025 Hickok Homes. A division of Hickok-Dible Companies. Kansas City's oldest real estate developer since 1904.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // State
-        let isGated = true;
-        let checkboxChecked = false;
         let activeHeroImage = 0;
         let activeProformaTab = '6418';
 
-        // Hero image slideshow
         const heroImages = document.querySelectorAll('.hero-image');
         const heroIndicators = document.querySelectorAll('.hero-indicator');
         const heroCaption = document.getElementById('heroCaption');
-        const captions = [
-            '6203 E Joshua Tree Lane - $17M Comparable',
-            '6516 E Meadowlark Lane - Modern Desert Architecture'
-        ];
+        const captions = ['6203 E Joshua Tree Lane - $17M Comparable', '6516 E Meadowlark Lane - Modern Desert Architecture'];
 
         function setHeroImage(index) {
             activeHeroImage = index;
-            heroImages.forEach((img, i) => {
-                img.classList.toggle('active', i === index);
-            });
-            heroIndicators.forEach((ind, i) => {
-                ind.classList.toggle('active', i === index);
-            });
+            heroImages.forEach((img, i) => img.classList.toggle('active', i === index));
+            heroIndicators.forEach((ind, i) => ind.classList.toggle('active', i === index));
             heroCaption.textContent = captions[index];
         }
 
-        // Auto-rotate hero images
         setInterval(() => {
             const nextIndex = (activeHeroImage + 1) % heroImages.length;
             setHeroImage(nextIndex);
         }, 6000);
 
-        // Swipe Gesture Support
         let touchstartX = 0;
         let touchendX = 0;
         const heroSection = document.querySelector('.hero');
 
         function checkDirection() {
-            if (touchendX < touchstartX) {
-                // Swiped Left -> Next Image
-                const nextIndex = (activeHeroImage + 1) % heroImages.length;
-                setHeroImage(nextIndex);
-            }
-            if (touchendX > touchstartX) {
-                // Swiped Right -> Previous Image
-                const prevIndex = (activeHeroImage - 1 + heroImages.length) % heroImages.length;
-                setHeroImage(prevIndex);
-            }
+            if (touchendX < touchstartX) setHeroImage((activeHeroImage + 1) % heroImages.length);
+            if (touchendX > touchstartX) setHeroImage((activeHeroImage - 1 + heroImages.length) % heroImages.length);
         }
 
-        heroSection.addEventListener('touchstart', e => {
-            touchstartX = e.changedTouches[0].screenX;
-        }, { passive: true });
+        heroSection.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; }, { passive: true });
+        heroSection.addEventListener('touchend', e => { touchendX = e.changedTouches[0].screenX; checkDirection(); }, { passive: true });
 
-        heroSection.addEventListener('touchend', e => {
-            touchendX = e.changedTouches[0].screenX;
-            checkDirection();
-        }, { passive: true });
-
-
-        // Form handling
-        const nameInput = document.getElementById('nameInput');
-        const emailInput = document.getElementById('emailInput');
-        const statusName = document.getElementById('statusName');
-        const statusEmail = document.getElementById('statusEmail');
-        const statusConfirmed = document.getElementById('statusConfirmed');
-
-        nameInput.addEventListener('input', () => {
-            statusName.textContent = nameInput.value.trim() ? '✓' : '○';
-        });
-
-        emailInput.addEventListener('input', () => {
-            statusEmail.textContent = emailInput.value.trim() && emailInput.value.includes('@') ? '✓' : '○';
-        });
-
-        function toggleCheckbox() {
-            checkboxChecked = !checkboxChecked;
-            const btn = document.getElementById('checkboxButton');
-            btn.classList.toggle('checked', checkboxChecked);
-            statusConfirmed.textContent = checkboxChecked ? '✓' : '○';
-        }
-
-        function submitForm() {
-            const name = nameInput.value.trim();
-            const email = emailInput.value.trim();
-            const errorEl = document.getElementById('formError');
-
-            // Validation
-            if (!name) {
-                errorEl.textContent = 'Please enter your name';
-                errorEl.classList.remove('hidden');
-                return;
-            }
-            if (!email || !email.includes('@')) {
-                errorEl.textContent = 'Please enter a valid email';
-                errorEl.classList.remove('hidden');
-                return;
-            }
-            if (!checkboxChecked) {
-                errorEl.textContent = 'Please confirm you are an accredited investor';
-                errorEl.classList.remove('hidden');
-                return;
-            }
-
-            // Success
-            errorEl.classList.add('hidden');
-            isGated = false;
-            unlockContent();
-        }
-
-        function unlockContent() {
-            // Update registration section
-            document.getElementById('registerForm').classList.add('hidden');
-            document.getElementById('registerSuccess').classList.remove('hidden');
-            document.getElementById('registerIconLock').classList.add('hidden');
-            document.getElementById('registerIconCheck').classList.remove('hidden');
-            document.getElementById('registerTitle').textContent = 'Welcome to the Portfolio';
-            document.getElementById('registerSubtitle').textContent = 'You now have full access to all investment materials.';
-
-            // Show hidden sections
-            document.getElementById('proformaSection').classList.remove('hidden');
-            document.getElementById('riskSection').classList.remove('hidden');
-            document.getElementById('timelineSection').classList.remove('hidden');
-            document.getElementById('faqSection').classList.remove('hidden');
-
-            // Remove locks from opportunity cards
-            document.getElementById('locked6418').classList.add('hidden');
-            document.getElementById('locked5840').classList.add('hidden');
-            document.getElementById('financials6418').classList.remove('blurred');
-            document.getElementById('financials5840').classList.remove('blurred');
-
-            // Initialize proforma
-            updateProforma();
-
-            // Icons are inline SVGs - no re-initialization needed
-
-            // Scroll to success message
-            document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Pro forma data
         const proformaData = {
-            '6418': {
-                acquisition: 3900000,
-                construction: 5120000,
-                allInCost: 9020000,
-                exitPrice: 16500000,
-                netProfit: 7480000,
-                equityMultiple: '1.83x'
-            },
-            '5840': {
-                acquisition: 3500000,
-                construction: 5100000,
-                allInCost: 8600000,
-                exitPrice: 16000000,
-                netProfit: 7400000,
-                equityMultiple: '1.86x'
-            },
-            'structure': {
-                pref: '7%',
-                hurdle: '20%',
-                split1: '80/20',
-                split2: '50/50'
-            }
+            '6418': { acquisition: 3900000, construction: 5120000, allInCost: 9020000, exitPrice: 16500000, netProfit: 7480000, equityMultiple: '1.83x' },
+            '5840': { acquisition: 3500000, construction: 5100000, allInCost: 8600000, exitPrice: 16000000, netProfit: 7400000, equityMultiple: '1.86x' },
+            'structure': { pref: '7%', hurdle: '20%', split1: '80/20', split2: '50/50' }
         };
 
         function formatCurrency(num) {
@@ -2756,74 +690,21 @@
 
         function setProformaTab(tab) {
             activeProformaTab = tab;
-            document.querySelectorAll('.proforma-tab').forEach(t => {
-                t.classList.toggle('active', t.dataset.tab === tab);
-            });
+            document.querySelectorAll('.proforma-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
             updateProforma();
         }
 
         function updateProforma() {
             const data = proformaData[activeProformaTab];
             const tbody = document.getElementById('proformaBody');
-
-            // Handle Structure Tab Differently
             if (activeProformaTab === 'structure') {
-                tbody.innerHTML = `
-                    <tr>
-                        <td colspan="3" class="deal-structure-header">Proposed Waterfall</td>
-                    </tr>
-                    <tr>
-                        <td class="row-label">Preferred Return</td>
-                        <td class="row-value font-display">${data.pref}</td>
-                        <td class="row-percent">Paid First</td>
-                    </tr>
-                    <tr>
-                        <td class="row-label">Split up to ${data.hurdle} IRR</td>
-                        <td class="row-value font-display">${data.split1}</td>
-                        <td class="row-percent">Investor / GP</td>
-                    </tr>
-                    <tr class="profit-row">
-                        <td class="row-label">Split Above ${data.hurdle}</td>
-                        <td class="row-value gold-gradient font-display">${data.split2}</td>
-                        <td class="row-percent gold-gradient">Profit Share</td>
-                    </tr>
-                `;
+                tbody.innerHTML = '<tr><td colspan="3" class="deal-structure-header">Proposed Waterfall</td></tr><tr><td class="row-label">Preferred Return</td><td class="row-value font-display">' + data.pref + '</td><td class="row-percent">Paid First</td></tr><tr><td class="row-label">Split up to ' + data.hurdle + ' IRR</td><td class="row-value font-display">' + data.split1 + '</td><td class="row-percent">Investor / GP</td></tr><tr class="profit-row"><td class="row-label">Split Above ' + data.hurdle + '</td><td class="row-value gold-gradient font-display">' + data.split2 + '</td><td class="row-percent gold-gradient">Profit Share</td></tr>';
             } else {
-                // Standard Pro Forma for Lots
-                tbody.innerHTML = `
-                    <tr>
-                        <td class="row-label">Land Acquisition</td>
-                        <td class="row-value font-display">${formatCurrency(data.acquisition)}</td>
-                        <td class="row-percent">${((data.acquisition / data.allInCost) * 100).toFixed(1)}%</td>
-                    </tr>
-                    <tr>
-                        <td class="row-label">Construction & Development</td>
-                        <td class="row-value font-display">${formatCurrency(data.construction)}</td>
-                        <td class="row-percent">${((data.construction / data.allInCost) * 100).toFixed(1)}%</td>
-                    </tr>
-                    <tr class="total-row">
-                        <td class="row-label">Total All-In Cost</td>
-                        <td class="row-value font-display">${formatCurrency(data.allInCost)}</td>
-                        <td class="row-percent">100%</td>
-                    </tr>
-                    <tr>
-                        <td class="row-label">Projected Exit Price</td>
-                        <td class="row-value font-display">${formatCurrency(data.exitPrice)}</td>
-                        <td class="row-percent">—</td>
-                    </tr>
-                    <tr class="profit-row">
-                        <td class="row-label">Net Profit</td>
-                        <td class="row-value gold-gradient font-display">${formatCurrency(data.netProfit)}</td>
-                        <td class="row-percent gold-gradient font-display" style="font-size: 1rem; font-weight: 600;">${data.equityMultiple} Eq. Mult.</td>
-                    </tr>
-                `;
+                tbody.innerHTML = '<tr><td class="row-label">Land Acquisition</td><td class="row-value font-display">' + formatCurrency(data.acquisition) + '</td><td class="row-percent">' + ((data.acquisition / data.allInCost) * 100).toFixed(1) + '%</td></tr><tr><td class="row-label">Construction & Development</td><td class="row-value font-display">' + formatCurrency(data.construction) + '</td><td class="row-percent">' + ((data.construction / data.allInCost) * 100).toFixed(1) + '%</td></tr><tr class="total-row"><td class="row-label">Total All-In Cost</td><td class="row-value font-display">' + formatCurrency(data.allInCost) + '</td><td class="row-percent">100%</td></tr><tr><td class="row-label">Projected Exit Price</td><td class="row-value font-display">' + formatCurrency(data.exitPrice) + '</td><td class="row-percent">-</td></tr><tr class="profit-row"><td class="row-label">Net Profit</td><td class="row-value gold-gradient font-display">' + formatCurrency(data.netProfit) + '</td><td class="row-percent gold-gradient font-display" style="font-size: 1rem; font-weight: 600;">' + data.equityMultiple + ' Eq. Mult.</td></tr>';
             }
         }
 
-        // Add blur to financials initially
-        document.getElementById('financials6418').classList.add('blurred');
-        document.getElementById('financials5840').classList.add('blurred');
+        updateProforma();
     </script>
 </body>
-
 </html>
